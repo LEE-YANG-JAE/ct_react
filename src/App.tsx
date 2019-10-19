@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavbarComponent from './layouts/navbar';
-import SwitchComponent from './layouts/switch';
+import RoutingComponent from './layouts/routing';
 
 const App: React.FC = () => {
 	return (
 		<div>
 			<Router>
 				<NavbarComponent />
-				<SwitchComponent />
+				<RoutingComponent />
 			</Router>
 		</div>
 	);
