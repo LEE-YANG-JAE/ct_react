@@ -26,7 +26,7 @@ export default class Excercise2 extends React.Component {
 			if (this.state.stringInput.length < 1) {
 				(document.getElementById('result') as any).style.display = 'none';
 				const title = 'Excercise2';
-				const body = `샘플 입력 값을 대신 넣을까요?`;
+				const body = `샘플 입력 값을 대신 넣을까요?<br/>샘플 입력 값을 대신 넣을까요?`;
 				const flag = 'excercise2';
 				this.child.current.handleShow(title, body, flag, this.modalCallback);
 			} else {

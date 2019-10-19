@@ -4,7 +4,7 @@ import Util from '../../utils/util';
 
 export default class ModalAlertComponent extends React.Component {
 	util: Util = new Util();
-	result: string = 'Okay';
+	result: string = 'confirm';
 	title: string | undefined;
 	body: string | undefined;
 	flag: string | undefined;
@@ -40,7 +40,7 @@ export default class ModalAlertComponent extends React.Component {
 								this.handleClose();
 							}}
 						>
-							Okay
+							Confirm
 						</Button>
 					</Modal.Footer>
 				</Modal>

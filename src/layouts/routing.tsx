@@ -4,6 +4,7 @@ import Excercise1 from '../chapter2/excercise1';
 import Excercise2 from '../chapter2/excercise2';
 import MainComponent from './main';
 import NotFound from './errors/404';
+import Excercise3 from '../chapter2/excercise3';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -18,6 +19,10 @@ const routes = [
 	{
 		path: '/excercise2',
 		component: Excercise2
+	},
+	{
+		path: '/excercise3',
+		component: Excercise3
 	}
 ];
 

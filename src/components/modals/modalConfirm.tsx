@@ -25,8 +25,8 @@ export default class ModalConfirmComponent extends React.Component {
 		this.flag = flag;
 		this.callback = callback;
 	};
-	saved = () => (this.result = 'confirm');
-	notSaved = () => (this.result = 'cancel');
+	saved = () => this.result = 'confirm';
+	notSaved = () => this.result = 'cancel';
 	render() {
 		return (
 			<div>
