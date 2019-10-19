@@ -10,10 +10,11 @@ export default class MainComponent extends React.Component {
 					<div className='first-content'>
 						<div className='first-content-left'>
 							<h1>
-								Landing Page<br />
-								for Apps
+								Landing Page<br />for Apps
 							</h1>
-							<p>We offer great landing pages for most of the business</p>
+							<p>
+								We offer great landing pages<br />for most of the business
+							</p>
 							<div>
 								<button className='content-btn'>Show More</button>
 							</div>
@@ -33,7 +34,9 @@ export default class MainComponent extends React.Component {
 				</div>
 				<footer>
 					<div className='footer-content'>
-						<p>Copy Right Resevered</p>
+						<div>
+							<h5>Copy Right Resevered</h5>
+						</div>
 					</div>
 				</footer>
 			</div>

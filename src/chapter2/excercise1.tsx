@@ -23,7 +23,9 @@ const Excercise1: React.FC = () => {
 	};
 	const inputUserName = () => {
 		if (form.userInput.length > 0) {
-			setResult(`Hello, ${form.userInput}`);
+			const value = `Hello, ${form.userInput}`;
+			setResult(value);
+			(document.getElementById('result2') as any).value = value; // 변수에 넣지 않고 바로 아이디를 이용하여 입력 넣음
 		} else {
 			setResult(``);
 		}
@@ -65,9 +67,12 @@ const Excercise1: React.FC = () => {
 			</button>
 			<br />
 			<br />
-			<label>
+			<p>
 				결과 : <input type='text' name='result' value={result} disabled />
-			</label>
+				<br />
+				<br />
+				결과(변수 없이 입력) <input type='text' name='result2' id='result2' disabled />
+			</p>
 		</div>
 	);
 };
