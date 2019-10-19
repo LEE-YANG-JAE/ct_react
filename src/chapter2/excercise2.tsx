@@ -1,11 +1,10 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import ModalComponent from '../components/modals/modalConfirm';
+import ModalConfirmComponent from '../components/modals/modalConfirm';
 
 export default class Excercise2 extends React.Component {
 	// 전역 변수
-	child: any; // 우선적으로 선언으로 만들어져 있어야 동작을 함
-	
+	private child: any; // 우선적으로 선언으로 만들어져 있어야 동작을 함
 	// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
 	constructor(props: any) {
 		super(props);
@@ -13,11 +12,7 @@ export default class Excercise2 extends React.Component {
 	}
 
 	state = {
-		stringInput: '',
-		modalSetting: {
-			title: 'Modal heading2',
-			body: `Woohoo, you're reading this text in a modal!`
-		}
+		stringInput: ''
 	};
 
 	// 입력 변화
@@ -30,7 +25,10 @@ export default class Excercise2 extends React.Component {
 		if (e.keyCode === 13) {
 			if (this.state.stringInput.length < 1) {
 				(document.getElementById('result') as any).style.display = 'none';
-				this.child.current.handleShow();
+				const title = 'Excercise2';
+				const body = `샘플 입력 값을 대신 넣을까요?`;
+				const flag = 'excercise2';
+				this.child.current.handleShow(title, body, flag, this.modalCallback);
 			} else {
 				this.inputString();
 			}
@@ -39,15 +37,20 @@ export default class Excercise2 extends React.Component {
 
 	// 내용 입력 후 결과
 	inputString = () => {
-		const str: string = this.state.stringInput;
-		const resultString: string = `${str} has ${str.length} characters.`;
-		const resultDom: any = document.getElementById('result');
-		resultDom.value = resultString;
-		resultDom.style.display = 'block';
+		if (this.state.stringInput.length > 0) {
+			const str: string = this.state.stringInput;
+			const resultString: string = `${str} has ${str.length} characters.`;
+			const resultDom: any = document.getElementById('result');
+			resultDom.value = resultString;
+			resultDom.style.display = 'block';
+		} else {
+			const resultDom: any = document.getElementById('result');
+			resultDom.style.display = 'none';
+		}
 	};
 
 	// 초기화
-	clean = () => {
+	clearContents = () => {
 		this.setState({ stringInput: '' });
 		const resultDom: any = document.getElementById('result');
 		resultDom.value = '';
@@ -55,9 +58,11 @@ export default class Excercise2 extends React.Component {
 	};
 
 	// 모달창 팝업 닫고나서의 콜백
-	modalCallback = (result: any) => {
+	modalCallback = (result: string, flag: string) => {
 		if (result === 'confirm') {
-			alert('confirm');
+			if (flag === 'excercise2') {
+				this.setState({ stringInput: '안녕하세요' });
+			}
 		}
 	};
 
@@ -65,12 +70,7 @@ export default class Excercise2 extends React.Component {
 	render() {
 		return (
 			<div className='container'>
-				<ModalComponent
-					title={this.state.modalSetting.title}
-					body={this.state.modalSetting.body}
-					callback={this.modalCallback}
-					ref={this.child}
-				/>
+				<ModalConfirmComponent ref={this.child} />
 				<br />
 				<Card>
 					<Card.Header>챕터2 - 입력, 프로세싱, 출력</Card.Header>
@@ -92,11 +92,11 @@ export default class Excercise2 extends React.Component {
 				&nbsp; {'입력한 글자수 : ' + this.state.stringInput.length}
 				<br />
 				<br />
-				<button className='btn btn-info' onClick={this.inputString}>
+				<button className='btn btn-info' id='inputString' onClick={this.inputString}>
 					글자 수 확인 출력
 				</button>
 				&nbsp;
-				<button className='btn btn-danger' onClick={this.clean}>
+				<button className='btn btn-danger' onClick={this.clearContents}>
 					초기화
 				</button>
 				<br />

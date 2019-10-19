@@ -2,29 +2,29 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Util from '../../utils/util';
 
-/**
- * @param title 모달 제목
- * @param body 모달 바디의 내용
- * @param callback 모달 종료 후 콜백 호출
- */
-interface Param {
-	title?: string;
-	body?: string;
-	callback?: any;
-}
-export default class ModalConfirmComponent extends React.Component<Param> {
+export default class ModalConfirmComponent extends React.Component {
 	util: Util = new Util();
 	result: string = 'cancel';
+	title: string | undefined;
+	body: string | undefined;
+	flag: string | undefined;
+	callback: any;
 	state = {
 		show: false
 	};
 	handleClose = () => {
 		this.setState({ show: false });
-		if( this.util.notNullCheck(this.props.callback)){
-			this.props.callback(this.result); // 파라미터로 result 값을 보낸다.
+		if (this.util.notNullCheck(this.callback)) {
+			this.callback(this.result, this.flag); // 콜백 파라미터로 result와 flag 값을 보낸다.
 		}
 	};
-	handleShow = () => this.setState({ show: true });
+	handleShow = (title?: string, body?: string, flag?: string, callback?: any) => {
+		this.setState({ show: true });
+		this.title = title;
+		this.body = body;
+		this.flag = flag;
+		this.callback = callback;
+	};
 	saved = () => (this.result = 'confirm');
 	notSaved = () => (this.result = 'cancel');
 	render() {
@@ -32,9 +32,9 @@ export default class ModalConfirmComponent extends React.Component<Param> {
 			<div>
 				<Modal show={this.state.show} onHide={this.handleClose}>
 					<Modal.Header closeButton>
-						<Modal.Title>{this.props.title}</Modal.Title>
+						<Modal.Title>{this.title}</Modal.Title>
 					</Modal.Header>
-					<Modal.Body>{this.props.body}</Modal.Body>
+					<Modal.Body>{this.body}</Modal.Body>
 					<Modal.Footer>
 						<Button
 							variant='secondary'
