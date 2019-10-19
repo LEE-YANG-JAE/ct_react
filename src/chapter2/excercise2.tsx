@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import ModalComponent from '../layouts/modals/modalConfirm';
+import ModalComponent from '../components/modals/modalConfirm';
 
 export default class Excercise2 extends React.Component {
 	// 전역 변수
@@ -55,9 +55,9 @@ export default class Excercise2 extends React.Component {
 	};
 
 	// 모달창 팝업 닫고나서의 콜백
-	cbtest = (result: any) => {
-		if (result === 'save') {
-			alert('saved');
+	modalCallback = (result: any) => {
+		if (result === 'confirm') {
+			alert('confirm');
 		}
 	};
 
@@ -68,7 +68,7 @@ export default class Excercise2 extends React.Component {
 				<ModalComponent
 					title={this.state.modalSetting.title}
 					body={this.state.modalSetting.body}
-					callback={this.cbtest}
+					callback={this.modalCallback}
 					ref={this.child}
 				/>
 				<br />

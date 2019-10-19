@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import Util from '../../utils/util';
 
 /**
  * @param title 모달 제목
@@ -12,17 +13,20 @@ interface Param {
 	callback?: any;
 }
 export default class ModalConfirmComponent extends React.Component<Param> {
-	result: string = 'not';
+	util: Util = new Util();
+	result: string = 'cancel';
 	state = {
 		show: false
 	};
 	handleClose = () => {
 		this.setState({ show: false });
-		this.props.callback(this.result); // 파라미터로 result 값을 보낸다.
+		if( this.util.notNullCheck(this.props.callback)){
+			this.props.callback(this.result); // 파라미터로 result 값을 보낸다.
+		}
 	};
 	handleShow = () => this.setState({ show: true });
-	saved = () => (this.result = 'save');
-	notSaved = () => (this.result = 'not');
+	saved = () => (this.result = 'confirm');
+	notSaved = () => (this.result = 'cancel');
 	render() {
 		return (
 			<div>
@@ -48,7 +52,7 @@ export default class ModalConfirmComponent extends React.Component<Param> {
 								this.handleClose();
 							}}
 						>
-							Save Changes
+							Confirm
 						</Button>
 					</Modal.Footer>
 				</Modal>
