@@ -1,9 +1,11 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import ModalComponent from '../layouts/modal';
+import ModalComponent from '../layouts/modals/modalConfirm';
 
 export default class Excercise2 extends React.Component {
+	// 전역 변수
 	child: any; // 우선적으로 선언으로 만들어져 있어야 동작을 함
+	
 	// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
 	constructor(props: any) {
 		super(props);
@@ -17,9 +19,13 @@ export default class Excercise2 extends React.Component {
 			body: `Woohoo, you're reading this text in a modal!`
 		}
 	};
+
+	// 입력 변화
 	inputChange = (e?: any) => {
 		this.setState({ stringInput: e.target.value });
 	};
+
+	// 키 다운 이벤트
 	inputKeyDown = (e: any) => {
 		if (e.keyCode === 13) {
 			if (this.state.stringInput.length < 1) {
@@ -30,24 +36,32 @@ export default class Excercise2 extends React.Component {
 			}
 		}
 	};
-	cbtest = (result: any) => {
-		if (result === 'save') {
-			alert('saved');
-		}
-	};
+
+	// 내용 입력 후 결과
 	inputString = () => {
 		const str: string = this.state.stringInput;
-		const resultString = `${str} has ${str.length} characters.`;
+		const resultString: string = `${str} has ${str.length} characters.`;
 		const resultDom: any = document.getElementById('result');
 		resultDom.value = resultString;
 		resultDom.style.display = 'block';
 	};
+
+	// 초기화
 	clean = () => {
 		this.setState({ stringInput: '' });
 		const resultDom: any = document.getElementById('result');
 		resultDom.value = '';
 		resultDom.style.display = 'none';
 	};
+
+	// 모달창 팝업 닫고나서의 콜백
+	cbtest = (result: any) => {
+		if (result === 'save') {
+			alert('saved');
+		}
+	};
+
+	// View
 	render() {
 		return (
 			<div className='container'>
