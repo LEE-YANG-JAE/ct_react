@@ -165,19 +165,7 @@ export default class Excercise5 extends React.Component {
 								value={this.state.result2}
 								onChange={this.inputChange}
 								style={{ resize: 'none' }}
-							>
-								{this.util.notNullCheck(this.state.first) &&
-								this.util.notNullCheck(this.state.second) ? (
-									() => {
-										const first: number = parseInt(this.state.first);
-										const second: number = parseInt(this.state.second);
-										let resultString: string = this.calcualtation(first, second);
-										this.setState({ result: resultString });
-									}
-								) : (
-									''
-								)}
-							</textarea>
+							/>
 						</Form.Group>
 					</div>
 				</div>
