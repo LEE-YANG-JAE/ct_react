@@ -14,7 +14,7 @@ export default class Excercise4 extends React.Component {
 		this.child = React.createRef();
 		this.form = React.createRef();
 	}
-	
+
 	// 상태
 	state = {
 		noun: '',
@@ -40,28 +40,28 @@ export default class Excercise4 extends React.Component {
 	// 내용 입력 후 결과
 	makeResult = () => {
 		const f: any = this.util.getAllFormValues(this.form.current);
-		if(this.validationCheck(f) === false){
+		if (this.validationCheck(f) === false) {
 			return;
 		}
-		let resultString = ''
-		if(f.noun === 'dog') {
+		let resultString = '';
+		if (f.noun === 'dog') {
 			resultString = `Do you ${f.verb} your ${f.adjective} ${f.noun} ${f.adverb}? That' hilarious! ${f.adjective2} ${f.noun}!`;
-		} else if(f.noun === 'cat' ) {
+		} else if (f.noun === 'cat') {
 			resultString = `Do you ${f.verb} your ${f.adjective} ${f.noun} ${f.adverb}? Is that possible? ${f.adjective2} ${f.noun}!`;
 		} else {
 			resultString = `Do you ${f.verb} my ${f.adjective} ${f.noun} ${f.adverb}? What a wonderful world! ${f.adjective2} ${f.noun}!`;
 		}
-		
+
 		this.setState({ result: resultString });
 	};
 
 	// 입력값 검증
 	validationCheck(form: any): boolean {
-		if(!this.util.notNullCheck(form.noun)) {
+		if (!this.util.notNullCheck(form.noun)) {
 			this.child.current.alertMessage('danger', `noun is null.`);
 			return false;
 		} else if (!this.util.notNullCheck(form.verb)) {
-			this.child.current.alertMessage('danger', `verbis null.`);
+			this.child.current.alertMessage('danger', `verb is null.`);
 			return false;
 		} else if (!this.util.notNullCheck(form.adjective)) {
 			this.child.current.alertMessage('danger', `adjective is null.`);
@@ -117,7 +117,6 @@ export default class Excercise4 extends React.Component {
 										value={this.state.noun}
 										onChange={this.inputChange}
 										onKeyDown={this.inputKeyDown}
-										required
 									/>
 								</Col>
 							</Form.Group>
@@ -205,11 +204,11 @@ export default class Excercise4 extends React.Component {
 								className='form-control'
 								value={this.state.result}
 								onChange={this.inputChange}
+								style={{ resize: 'none' }}
 								disabled
 							/>
 						</Form.Group>
 					</div>
-					
 				</div>
 			</div>
 		);

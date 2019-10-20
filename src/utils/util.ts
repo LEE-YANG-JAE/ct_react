@@ -20,7 +20,7 @@ export default class Util {
      * @param formRef Form을 가리키고 있는 ref
      * @return formObject 
      */
-    getAllFormValues(formRef:any): any {
+    getAllFormValues(formRef: any): any {
         const form: any = ReactDOM.findDOMNode(formRef);
 		const formObject: any = Object.values(form.elements).reduce((obj: any, field: any) => {
 			obj[field.name] = field.value;

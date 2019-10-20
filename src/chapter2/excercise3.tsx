@@ -112,6 +112,7 @@ export default class Excercise3 extends React.Component {
 						value={this.state.quote}
 						onChange={this.inputChange}
 						onKeyDown={this.inputKeyDown}
+						style={{ resize: 'none' }}
 					/>
 					<br />
 					<br />
@@ -141,7 +142,7 @@ export default class Excercise3 extends React.Component {
 						cols={50}
 						value={this.state.result}
 						onChange={this.inputChange}
-						style={{ display: 'none' }}
+						style={{ display: 'none', resize: 'none' }}
 						disabled
 					/>
 					<br />

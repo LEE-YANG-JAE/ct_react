@@ -23,17 +23,20 @@ export default class NavbarComponent extends React.Component {
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Nav className='mr-auto'>
 							<NavDropdown title='챕터2' id='basic-nav-dropdown'>
-								<LinkContainer to='/excercise1'>
+								<LinkContainer to='/chapter2/excercise1'>
 									<NavDropdown.Item>연습문제 1</NavDropdown.Item>
 								</LinkContainer>
-								<LinkContainer to='/excercise2'>
+								<LinkContainer to='/chapter2/excercise2'>
 									<NavDropdown.Item>연습문제 2</NavDropdown.Item>
 								</LinkContainer>
-								<LinkContainer to='/excercise3'>
+								<LinkContainer to='/chapter2/excercise3'>
 									<NavDropdown.Item>연습문제 3</NavDropdown.Item>
 								</LinkContainer>
-								<LinkContainer to='/excercise4'>
+								<LinkContainer to='/chapter2/excercise4'>
 									<NavDropdown.Item>연습문제 4</NavDropdown.Item>
+								</LinkContainer>
+								<LinkContainer to='/chapter2/excercise5'>
+									<NavDropdown.Item>연습문제 5</NavDropdown.Item>
 								</LinkContainer>
 							</NavDropdown>
 						</Nav>

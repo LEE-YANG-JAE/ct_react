@@ -101,7 +101,7 @@ export default class Excercise2 extends React.Component {
 				</button>
 				<br />
 				<br />
-				<textarea id='result' name='result' rows={4} cols={50} disabled style={{ display: 'none' }} />
+				<textarea id='result' name='result' rows={4} cols={50} disabled style={{ display: 'none', resize: 'none' }} />
 			</div>
 		);
 	}
