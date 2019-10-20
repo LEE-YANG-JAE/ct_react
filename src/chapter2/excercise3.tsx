@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Badge } from 'react-bootstrap';
 import AlertComponent from '../components/alerts/alert';
 import Util from '../utils/util';
 
@@ -7,6 +7,9 @@ export default class Excercise3 extends React.Component {
 	// 전역 변수
 	private child: any; // 우선적으로 선언으로 만들어져 있어야 동작을 함
 	private util: Util = new Util();
+	private saveMap = new Map();
+	private totalString: string = '';
+	
 	// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
 	constructor(props: any) {
 		super(props);
@@ -16,7 +19,8 @@ export default class Excercise3 extends React.Component {
 	state = {
 		quote: '',
 		writer: '',
-		result: ''
+		result: '',
+		total: ''
 	};
 
 	// 입력 변화
@@ -33,26 +37,41 @@ export default class Excercise3 extends React.Component {
 
 	// 내용 입력 후 결과
 	makeResult = () => {
-		let boolCheck = true;
-		let keyString:string = '';
+		let boolCheck:boolean = true;
+		let keyString: string = '';
+		let checkArray: Array<string> = [];
+		
+
+		const resultDom: any = document.getElementById('result');
 		Object.entries(this.state).forEach(([ key, value ]) => {
-			if(this.util.notNullCheck(value) === false) {
-				if(key !== 'result'){
+			if (this.util.notNullCheck(value) === false) {
+				if (key !== 'result' && key !== 'total') {
 					keyString = key.toUpperCase();
+					checkArray.push(keyString);
 					boolCheck = false;
 				}
 			}
 		});
 
-		if(boolCheck !== true ) {
-			this.child.current.alertMessage('error', `${keyString} is null.`);
+		if (boolCheck !== true) {
+			this.child.current.alertMessage('danger', `${checkArray.join(', ')} is null.`);
+			resultDom.style.display = 'none';
 			return;
 		}
-
+		
 		const revisedQuote = '"'.concat(this.state.quote).concat('."');
 		const revisedWriter = this.state.writer.concat(' says, ');
 		const resultSentenct = revisedWriter + revisedQuote;
 		this.setState({ result: resultSentenct });
+		this.saveMap.set(this.state.writer, this.state.quote);
+		resultDom.style.display = 'block';
+
+		this.setState({total: ''});
+		this.totalString = '';
+		this.saveMap.forEach((value, key)=>{
+			this.totalString += `${key} : ${value}\n`;
+			this.setState({total: this.totalString});
+		});
 	};
 
 	// 초기화
@@ -60,15 +79,18 @@ export default class Excercise3 extends React.Component {
 		this.setState({
 			quote: '',
 			writer: '',
-			result: ''
+			result: '',
+			total: ''
 		});
+		const resultDom: any = document.getElementById('result');
+		resultDom.style.display = 'none';
 	};
 
 	// View
 	render() {
 		return (
 			<div>
-				<AlertComponent ref={this.child}/>
+				<AlertComponent ref={this.child} />
 				<div className='container'>
 					<br />
 					<Card>
@@ -117,10 +139,24 @@ export default class Excercise3 extends React.Component {
 						name='result'
 						rows={5}
 						cols={50}
-						disabled
 						value={this.state.result}
 						onChange={this.inputChange}
-						style={{display:'none'}}
+						style={{ display: 'none' }}
+						disabled
+					/>
+					<br />
+					<Badge pill variant="primary">지금까지의 입력</Badge>
+					<br />
+					<br />
+					<textarea
+						id='total'
+						name='total'
+						rows={5}
+						cols={50}
+						value={this.state.total}
+						onChange={this.inputChange}
+						style={{padding:'5px'}}
+						disabled
 					/>
 				</div>
 			</div>
