@@ -32,7 +32,9 @@ export default class NavbarComponent extends React.Component {
 								<LinkContainer to='/excercise3'>
 									<NavDropdown.Item>연습문제 3</NavDropdown.Item>
 								</LinkContainer>
-								<NavDropdown.Item href='#action/3.4'>Separated link</NavDropdown.Item>
+								<LinkContainer to='/excercise4'>
+									<NavDropdown.Item>연습문제 4</NavDropdown.Item>
+								</LinkContainer>
 							</NavDropdown>
 						</Nav>
 						<Form inline>

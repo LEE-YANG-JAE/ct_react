@@ -1,10 +1,12 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Excercise1 from '../chapter2/excercise1';
-import Excercise2 from '../chapter2/excercise2';
+
 import MainComponent from './main';
 import NotFound from './errors/404';
+import Excercise1 from '../chapter2/excercise1';
+import Excercise2 from '../chapter2/excercise2';
 import Excercise3 from '../chapter2/excercise3';
+import Excercise4 from '../chapter2/excercise4';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -23,6 +25,10 @@ const routes = [
 	{
 		path: '/excercise3',
 		component: Excercise3
+	},
+	{
+		path: '/excercise4',
+		component: Excercise4
 	}
 ];
 
