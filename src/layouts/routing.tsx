@@ -8,6 +8,7 @@ import Excercise2 from '../chapter2/excercise2';
 import Excercise3 from '../chapter2/excercise3';
 import Excercise4 from '../chapter2/excercise4';
 import Excercise5 from '../chapter2/excercise5';
+import Excercise6 from '../chapter2/excercise6';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -34,6 +35,10 @@ const routes = [
 	{
 		path: '/chapter2/excercise5',
 		component: Excercise5
+	},
+	{
+		path: '/chapter2/excercise6',
+		component: Excercise6
 	}
 ];
 

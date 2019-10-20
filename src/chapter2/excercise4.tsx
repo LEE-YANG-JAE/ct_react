@@ -196,7 +196,7 @@ export default class Excercise4 extends React.Component {
 						<br />
 						<br />
 						<Form.Group controlId='result'>
-							<Form.Label>결과창</Form.Label>
+							<Form.Label>결과</Form.Label>
 							<textarea
 								id='result'
 								name='result'
