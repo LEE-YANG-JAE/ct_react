@@ -25,11 +25,15 @@ export default class Login extends React.Component {
 	loginBtn = (e: any) => {
 		this.setState({ submited: true });
 		const f = this.util.getAllFormValues(this.form.current);
+
+		if (this.util.notNullCheck(f.userId) === false || this.util.notNullCheck(f.password) === false) {
+			return;
+		}
 		const loginCheck: boolean = this.loginProcess(f);
 		if (loginCheck) {
 			document.location.href = '/chapter2/excercise2';
 		} else {
-			this.modalAlert.current.handleShow('test','test2');
+			this.modalAlert.current.handleShow('Login', 'Login Fail. Please check your information.');
 		}
 	};
 
@@ -41,9 +45,17 @@ export default class Login extends React.Component {
 		}
 	}
 	render() {
+		let userIdError: any;
+		let passwordError: any;
+		if (!this.state.userId.length && this.state.submited) {
+			userIdError = <span style={{ color: 'red' }}>Please input your ID</span>;
+		}
+		if (!this.state.password.length && this.state.submited) {
+			passwordError = <span style={{ color: 'red' }}>Please input your Password</span>;
+		}
 		return (
 			<div className={loginStyle.body}>
-				<ModalAlert ref={this.modalAlert}/>
+				<ModalAlert ref={this.modalAlert} />
 				<form className={loginStyle.loginForm} ref={this.form}>
 					<h1>Login</h1>
 
@@ -56,11 +68,7 @@ export default class Login extends React.Component {
 							onChange={this.inputChange}
 						/>
 					</div>
-					{!this.state.userId.length && this.state.submited ? (
-						<span style={{ color: 'red' }}>Please input your ID</span>
-					) : (
-						<span />
-					)}
+					{userIdError}
 
 					<div className={loginStyle.txtb}>
 						<input
@@ -71,11 +79,7 @@ export default class Login extends React.Component {
 							onChange={this.inputChange}
 						/>
 					</div>
-					{!this.state.password.length && this.state.submited ? (
-						<span style={{ color: 'red' }}>Please input your Password</span>
-					) : (
-						<span />
-					)}
+					{passwordError}
 
 					<input type='button' className={loginStyle.logbtn} onClick={this.loginBtn} value='Login' />
 					<div className={loginStyle.bottomText}>
