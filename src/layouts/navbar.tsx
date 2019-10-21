@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
 import '../css/layouts/navbar.css';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -49,8 +49,9 @@ export default class NavbarComp extends React.Component {
 							</NavDropdown>
 						</Nav>
 						<Form inline>
-							<FormControl type='text' placeholder='Search' className='mr-sm-2' />
-							<Button variant='outline-success'>Search</Button>
+							<LinkContainer to='/login'>
+								<Button variant='outline-success'>Login</Button>
+							</LinkContainer>
 						</Form>
 					</Navbar.Collapse>
 				</Navbar>
