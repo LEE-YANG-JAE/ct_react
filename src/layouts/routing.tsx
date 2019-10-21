@@ -1,14 +1,15 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import MainComponent from './main';
+import Main from './Main';
 import NotFound from './errors/404';
-import Excercise1 from '../chapter2/excercise1';
-import Excercise2 from '../chapter2/excercise2';
-import Excercise3 from '../chapter2/excercise3';
-import Excercise4 from '../chapter2/excercise4';
-import Excercise5 from '../chapter2/excercise5';
-import Excercise6 from '../chapter2/excercise6';
+import Chapter2_1 from '../chapter2/Chapter2_1';
+import Chapter2_2 from '../chapter2/Chapter2_2';
+import Chapter2_3 from '../chapter2/Chapter2_3';
+import Chapter2_4 from '../chapter2/Chapter2_4';
+import Chapter2_5 from '../chapter2/Chapter2_5';
+import Chapter2_6 from '../chapter2/Chapter2_6';
+import Chapter3_1 from '../chapter3/Chapter3_1';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -18,38 +19,42 @@ const routes = [
 	},
 	{
 		path: '/chapter2/excercise1',
-		component: Excercise1
+		component: Chapter2_1
 	},
 	{
 		path: '/chapter2/excercise2',
-		component: Excercise2
+		component: Chapter2_2
 	},
 	{
 		path: '/chapter2/excercise3',
-		component: Excercise3
+		component: Chapter2_3
 	},
 	{
 		path: '/chapter2/excercise4',
-		component: Excercise4
+		component: Chapter2_4
 	},
 	{
 		path: '/chapter2/excercise5',
-		component: Excercise5
+		component: Chapter2_5
 	},
 	{
 		path: '/chapter2/excercise6',
-		component: Excercise6
+		component: Chapter2_6
+	},
+	{
+		path: '/chapter3/excercise1',
+		component: Chapter3_1
 	}
 ];
 
 const RouteWithSubRoutes = (route: any) => (
 	<Route path={route.path} render={(props) => <route.component {...props} routes={route.routes} />} />
 );
-export default class RoutingComponent extends React.Component {
+export default class Routing extends React.Component {
 	render() {
 		return (
 			<Switch>
-				<Route exact path='/' component={MainComponent} />
+				<Route exact path='/' component={Main} />
 				{routes.map((route: any) => <RouteWithSubRoutes key={route.path} {...route} />)}
 				<Redirect to='/404' />
 			</Switch>

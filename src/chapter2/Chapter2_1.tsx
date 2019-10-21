@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 
-const Excercise1: React.FC = () => {
+const Chapter2_1: React.FC = () => {
 	const [ result, setResult ] = useState('');
 	const [ form, setValues ] = useState({
 		userInput: ''
@@ -76,4 +76,4 @@ const Excercise1: React.FC = () => {
 		</div>
 	);
 };
-export default Excercise1;
+export default Chapter2_1;

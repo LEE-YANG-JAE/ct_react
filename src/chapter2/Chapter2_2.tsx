@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import ModalConfirmComponent from '../components/modals/modalConfirm';
 
-export default class Excercise2 extends React.Component {
+export default class Chapter2_2 extends React.Component {
 	// 전역 변수
 	private child: any; // 우선적으로 선언으로 만들어져 있어야 동작을 함
 	// https://stackoverflow.com/questions/37949981/call-child-method-from-parent

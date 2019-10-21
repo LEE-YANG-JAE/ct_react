@@ -3,7 +3,7 @@ import { Card, Badge } from 'react-bootstrap';
 import AlertComponent from '../components/alerts/alert';
 import Util from '../utils/util';
 
-export default class Excercise3 extends React.Component {
+export default class Chapter2_3 extends React.Component {
 	// 전역 변수
 	private child: any; // 우선적으로 선언으로 만들어져 있어야 동작을 함
 	private util: Util = new Util();

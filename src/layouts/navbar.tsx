@@ -3,7 +3,7 @@ import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-boots
 import '../css/layouts/navbar.css';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-export default class NavbarComponent extends React.Component {
+export default class NavbarComp extends React.Component {
 	state = {
 		linkStyle: {
 			color: 'inherit',
@@ -22,24 +22,29 @@ export default class NavbarComponent extends React.Component {
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Nav className='mr-auto'>
-							<NavDropdown title='챕터2' id='basic-nav-dropdown'>
+							<NavDropdown title='입력, 프로세싱, 출력' id='basic-nav-dropdown'>
 								<LinkContainer to='/chapter2/excercise1'>
-									<NavDropdown.Item>연습문제 1</NavDropdown.Item>
+									<NavDropdown.Item>인사하기</NavDropdown.Item>
 								</LinkContainer>
 								<LinkContainer to='/chapter2/excercise2'>
-									<NavDropdown.Item>연습문제 2</NavDropdown.Item>
+									<NavDropdown.Item>글자 수 세기</NavDropdown.Item>
 								</LinkContainer>
 								<LinkContainer to='/chapter2/excercise3'>
-									<NavDropdown.Item>연습문제 3</NavDropdown.Item>
+									<NavDropdown.Item>따옴표 출력</NavDropdown.Item>
 								</LinkContainer>
 								<LinkContainer to='/chapter2/excercise4'>
-									<NavDropdown.Item>연습문제 4</NavDropdown.Item>
+									<NavDropdown.Item>Mad Libs</NavDropdown.Item>
 								</LinkContainer>
 								<LinkContainer to='/chapter2/excercise5'>
-									<NavDropdown.Item>연습문제 5</NavDropdown.Item>
+									<NavDropdown.Item>간단한 수학</NavDropdown.Item>
 								</LinkContainer>
 								<LinkContainer to='/chapter2/excercise6'>
-									<NavDropdown.Item>연습문제 6</NavDropdown.Item>
+									<NavDropdown.Item>퇴직 계산기</NavDropdown.Item>
+								</LinkContainer>
+							</NavDropdown>
+							<NavDropdown title='연산' id='basic-nav-dropdown'>
+								<LinkContainer to='/chapter3/excercise1'>
+									<NavDropdown.Item>직사각형 방의 면적</NavDropdown.Item>
 								</LinkContainer>
 							</NavDropdown>
 						</Nav>

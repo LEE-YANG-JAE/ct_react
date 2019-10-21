@@ -3,7 +3,7 @@ import { Card, Form, Row, Col, Button, ButtonToolbar } from 'react-bootstrap';
 import AlertComponent from '../components/alerts/alert';
 import Util from '../utils/util';
 
-export default class Excercise4 extends React.Component {
+export default class Chapter2_4 extends React.Component {
 	// 전역 변수
 	private util: Util = new Util();
 	private child: any;

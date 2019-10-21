@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import NavbarComponent from './layouts/navbar';
-import RoutingComponent from './layouts/routing';
+import Routing from './layouts/Routing';
+import NavbarComp from './layouts/Navbar';
 
 const App: React.FC = () => {
 	return (
 		<div>
 			<Router>
-				<NavbarComponent />
-				<RoutingComponent />
+				<NavbarComp />
+				<Routing />
 			</Router>
 		</div>
 	);

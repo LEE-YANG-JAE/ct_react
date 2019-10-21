@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/layouts/main.css';
 import iphone from '../css/images/iphone.png';
 
-export default class MainComponent extends React.Component {
+export default class Main extends React.Component {
 	render() {
 		return (
 			<div className=''>
