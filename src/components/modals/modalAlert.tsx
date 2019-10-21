@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Util from '../../utils/util';
 
-export default class ModalAlertComponent extends React.Component {
+export default class ModalAlert extends React.Component {
 	util: Util = new Util();
 	result: string = 'confirm';
 	title: string | undefined;

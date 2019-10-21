@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import ModalConfirmComponent from '../components/modals/modalConfirm';
+import ModalConfirm from '../components/modals/ModalConfirm';
 
 export default class Chapter2_2 extends React.Component {
 	// 전역 변수
@@ -70,7 +70,7 @@ export default class Chapter2_2 extends React.Component {
 	render() {
 		return (
 			<div className='container'>
-				<ModalConfirmComponent ref={this.child} />
+				<ModalConfirm ref={this.child} />
 				<br />
 				<Card>
 					<Card.Header>챕터2 - 입력, 프로세싱, 출력</Card.Header>

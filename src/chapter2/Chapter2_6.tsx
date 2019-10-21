@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Form, Row, Col, Button, ButtonToolbar } from 'react-bootstrap';
-import AlertComponent from '../components/alerts/alert';
+import AlertComponent from '../components/alerts/AlertComponent';
 import Util from '../utils/util';
-import ModalAlertComponent from '../components/modals/modalAlert';
+import ModalAlert from '../components/modals/ModalAlert';
 
 export default class Chapter2_6 extends React.Component {
 	// 전역 변수
@@ -72,7 +72,7 @@ export default class Chapter2_6 extends React.Component {
 	render() {
 		return (
 			<div>
-				<ModalAlertComponent ref={this.modalAlert} />
+				<ModalAlert ref={this.modalAlert} />
 				<AlertComponent ref={this.child} />
 				<div className='container'>
 					<br />

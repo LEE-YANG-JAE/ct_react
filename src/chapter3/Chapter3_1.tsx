@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import AlertComponent from '../components/alerts/alert';
-import ModalAlertComponent from '../components/modals/modalAlert';
+import AlertComponent from '../components/alerts/AlertComponent';
+import ModalAlert from '../components/modals/ModalAlert';
 
 export default class Chapter3_1 extends React.Component {
 	private child: any;
@@ -37,7 +37,7 @@ export default class Chapter3_1 extends React.Component {
 	render() {
 		return (
 			<div>
-				<ModalAlertComponent ref={this.modalAlert} />
+				<ModalAlert ref={this.modalAlert} />
 				<AlertComponent ref={this.child} />
 				<div className='container'>
 					<br />
