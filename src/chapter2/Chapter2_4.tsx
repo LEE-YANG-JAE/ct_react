@@ -33,7 +33,7 @@ export default class Chapter2_4 extends React.Component {
 	// 키 다운 이벤트
 	inputKeyDown = (e: any) => {
 		if (e.keyCode === 13) {
-			this.setState({ [e.target.name]: e.target.value });
+			this.makeResult();
 		}
 	};
 
@@ -75,6 +75,7 @@ export default class Chapter2_4 extends React.Component {
 		}
 		return true;
 	}
+	
 	// 초기화
 	clearContents = () => {
 		this.setState({

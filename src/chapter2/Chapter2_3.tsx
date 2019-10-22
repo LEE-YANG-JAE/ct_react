@@ -31,7 +31,7 @@ export default class Chapter2_3 extends React.Component {
 	// 키 다운 이벤트
 	inputKeyDown = (e: any) => {
 		if (e.keyCode === 13) {
-			this.setState({ [e.target.name]: e.target.value });
+			this.makeResult();
 		}
 	};
 
@@ -41,7 +41,6 @@ export default class Chapter2_3 extends React.Component {
 		let keyString: string = '';
 		let checkArray: Array<string> = [];
 		
-
 		const resultDom: any = document.getElementById('result');
 		Object.entries(this.state).forEach(([ key, value ]) => {
 			if (this.util.notNullCheck(value) === false) {

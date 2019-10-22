@@ -6,6 +6,7 @@ import ModalAlert from '../components/modals/ModalAlert';
 export default class Chapter3_1 extends React.Component {
 	private child: any;
 	private modalAlert: any;
+	
 	constructor(props: any) {
 		super(props);
 		this.child = React.createRef();

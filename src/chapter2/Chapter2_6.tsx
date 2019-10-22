@@ -8,17 +8,14 @@ export default class Chapter2_6 extends React.Component {
 	// 전역 변수
 	private util: Util = new Util();
 	private child: any;
-	private form: any;
 	private modalAlert: any;
 
 	constructor(props: any) {
 		super(props);
 		this.child = React.createRef();
-		this.form = React.createRef();
 		this.modalAlert = React.createRef();
 	}
 
-	// 상태
 	state = {
 		currentAge: '',
 		retireAge: '',
@@ -88,7 +85,7 @@ export default class Chapter2_6 extends React.Component {
 					</Card>
 					<br />
 					<div style={{ width: '80%', margin: 'auto', padding: '20px' }}>
-						<Form ref={this.form}>
+						<Form>
 							<Form.Group as={Row}>
 								<Form.Label column sm='4'>
 									What is your current age?

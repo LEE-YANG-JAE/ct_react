@@ -1,18 +1,42 @@
 import React from 'react';
-import loginStyle from '../css/layouts/login.module.css';
+import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
+import loginStyle from '../css/layouts/login.module.css';
 import Util from '../utils/util';
 import ModalAlert from '../components/modals/ModalAlert';
+import { loginStatusChange } from '../redux/actions';
+import { loginStore } from '../redux/store';
 
-export default class Login extends React.Component {
+
+// https://stackoverflow.com/questions/48219432/react-router-typescript-errors-on-withrouter-after-updating-version
+// https://dev.to/kozakrisz/react-router---how-to-pass-history-object-to-a-component-3l0j
+// Type whatever you expect in 'this.props.match.params.*'
+type PathParamsType = {
+	param1: string;
+};
+
+// Your component own properties
+type PropsType = RouteComponentProps<PathParamsType> & {
+	someString: string
+};
+
+class LoginComponent extends React.Component<PropsType> {
 	private util = new Util();
 	private form: any;
 	private modalAlert: any;
+
 	constructor(props: any) {
 		super(props);
 		this.form = React.createRef();
 		this.modalAlert = React.createRef();
+		this.state = {
+			userId: '',
+			password: '',
+			submited: false
+		};
 	}
+
 	state = {
 		userId: '',
 		password: '',
@@ -22,7 +46,15 @@ export default class Login extends React.Component {
 	inputChange = (e: any) => {
 		this.setState({ [e.target.name]: e.target.value, submited: false });
 	};
-	loginBtn = (e: any) => {
+
+	// 키 다운 이벤트
+	inputKeyDown = (e: any) => {
+		if (e.keyCode === 13) {
+			this.loginBtn();
+		}
+	};
+
+	loginBtn = () => {
 		this.setState({ submited: true });
 		const f = this.util.getAllFormValues(this.form.current);
 
@@ -31,14 +63,24 @@ export default class Login extends React.Component {
 		}
 		const loginCheck: boolean = this.loginProcess(f);
 		if (loginCheck) {
-			document.location.href = '/chapter2/excercise2';
+			const { history } = this.props;
+			if (history) {
+				const loginInfo = {
+					logined: true,
+					sessionInfo: 'yangjae'
+				};
+				loginStore.dispatch(loginStatusChange(loginInfo));
+				console.log(loginStore.getState());
+				history.push('/chapter3/excercise1');
+			}
 		} else {
 			this.modalAlert.current.handleShow('Login', 'Login Fail. Please check your information.');
 		}
 	};
 
+	// 로그인 검증
 	loginProcess(f: any): boolean {
-		if (f.userId === 'admin' && f.password === '1234') {
+		if (f.userId === '1' && f.password === '1') {
 			return true;
 		} else {
 			return false;
@@ -90,3 +132,5 @@ export default class Login extends React.Component {
 		);
 	}
 }
+
+export default withRouter(LoginComponent);

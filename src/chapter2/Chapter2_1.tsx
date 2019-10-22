@@ -37,6 +37,8 @@ const Chapter2_1: React.FC = () => {
 		});
 		setResult(``);
 	};
+	
+	// View
 	return (
 		<div className='container'>
 			<br />

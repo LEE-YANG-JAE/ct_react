@@ -59,8 +59,8 @@ export default class Routing extends React.Component {
 	render() {
 		return (
 			<Switch>
-				<Route exact path='/' component={Main} />
 				{routes.map((route: any) => <RouteWithSubRoutes key={route.path} {...route} />)}
+				<Route exact path='/' component={Main} /> 
 				<Redirect to='/404' />
 			</Switch>
 		);

@@ -1,17 +1,14 @@
 import React from 'react';
 import { Card, Form, Row, Col, Button, ButtonToolbar } from 'react-bootstrap';
-import AlertComponent from '../components/alerts/AlertComponent';
 import Util from '../utils/util';
 
 export default class Chapter2_5 extends React.Component {
 	// 전역 변수
 	private util: Util = new Util();
-	private child: any;
 	private form: any;
 
 	constructor(props: any) {
 		super(props);
-		this.child = React.createRef();
 		this.form = React.createRef();
 	}
 
@@ -80,7 +77,6 @@ export default class Chapter2_5 extends React.Component {
 	render() {
 		return (
 			<div>
-				<AlertComponent ref={this.child} />
 				<div className='container'>
 					<br />
 					<Card>

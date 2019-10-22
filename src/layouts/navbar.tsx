@@ -3,14 +3,28 @@ import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
 import '../css/layouts/navbar.css';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-export default class NavbarComp extends React.Component {
+import { loginStore } from '../redux/store';
+import { logout } from '../redux/actions';
+
+
+class NavbarCompnent extends React.Component {
 	state = {
 		linkStyle: {
 			color: 'inherit',
 			textDecoration: 'inherit'
-		}
+		},
+		display: 'none',
+		logined: false
+	};
+	logout = () => {
+		loginStore.dispatch(logout());
+		console.log(loginStore.getState());
 	};
 	render() {
+		let {logined} = this.state;
+		const loginStatus = loginStore.getState();
+		logined = loginStatus.loginInfo.logined;
+		console.log(logined);
 		return (
 			<div>
 				<Navbar bg='dark' variant='dark' expand='lg'>
@@ -52,6 +66,11 @@ export default class NavbarComp extends React.Component {
 							<LinkContainer to='/login'>
 								<Button variant='outline-success'>Login</Button>
 							</LinkContainer>
+							<LinkContainer to='/login'>
+								<Button variant='outline-danger' onClick={this.logout}>
+									Logout
+								</Button>
+							</LinkContainer>
 						</Form>
 					</Navbar.Collapse>
 				</Navbar>
@@ -59,3 +78,5 @@ export default class NavbarComp extends React.Component {
 		);
 	}
 }
+
+export default NavbarCompnent;
