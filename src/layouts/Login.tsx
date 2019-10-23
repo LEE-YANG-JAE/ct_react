@@ -8,7 +8,6 @@ import ModalAlert from '../components/modals/ModalAlert';
 import { loginStatusChange } from '../redux/actions';
 import { loginStore } from '../redux/store';
 
-
 // https://stackoverflow.com/questions/48219432/react-router-typescript-errors-on-withrouter-after-updating-version
 // https://dev.to/kozakrisz/react-router---how-to-pass-history-object-to-a-component-3l0j
 // Type whatever you expect in 'this.props.match.params.*'
@@ -65,13 +64,13 @@ class LoginComponent extends React.Component<PropsType> {
 		if (loginCheck) {
 			const { history } = this.props;
 			if (history) {
-				const loginInfo = {
+				const loginInfo: any = {
 					logined: true,
 					sessionInfo: 'yangjae'
 				};
 				loginStore.dispatch(loginStatusChange(loginInfo));
-				console.log(loginStore.getState());
-				history.push('/chapter3/excercise1');
+				localStorage.setItem('loginStore', JSON.stringify(loginStore.getState()));
+				history.push('/main');
 			}
 		} else {
 			this.modalAlert.current.handleShow('Login', 'Login Fail. Please check your information.');

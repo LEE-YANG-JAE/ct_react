@@ -1,11 +1,10 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
 import '../css/layouts/navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { loginStore } from '../redux/store';
 import { logout } from '../redux/actions';
-
 
 class NavbarCompnent extends React.Component {
 	state = {
@@ -13,23 +12,33 @@ class NavbarCompnent extends React.Component {
 			color: 'inherit',
 			textDecoration: 'inherit'
 		},
-		display: 'none',
-		logined: false
+		display: 'none'
 	};
 	logout = () => {
 		loginStore.dispatch(logout());
-		console.log(loginStore.getState());
+		localStorage.setItem('loginStore', JSON.stringify(loginStore.getState()));
+		this.setState({ display: 'none' });
 	};
+	componentDidMount() {
+		let loginStatus: any;
+		if (localStorage.getItem('loginStore')) {
+			loginStatus = JSON.parse(localStorage.getItem('loginStore') as any);
+		} else {
+			localStorage.setItem('loginStore', JSON.stringify(loginStore.getState()));
+		}
+		if (loginStatus.logined) {
+			this.setState({ display: 'block' });
+		} else {
+			this.setState({ display: 'none' });
+		}
+	}
 	render() {
-		let {logined} = this.state;
-		const loginStatus = loginStore.getState();
-		logined = loginStatus.loginInfo.logined;
-		console.log(logined);
 		return (
-			<div>
+			<div style={{ display: this.state.display }}>
+				{this.state.display === 'block' ? <Redirect to='/main' /> : <Redirect to='/login' />}
 				<Navbar bg='dark' variant='dark' expand='lg'>
 					<Navbar.Brand>
-						<Link to='/' style={this.state.linkStyle}>
+						<Link to='/main' style={this.state.linkStyle}>
 							Coding Training
 						</Link>
 					</Navbar.Brand>
@@ -63,10 +72,10 @@ class NavbarCompnent extends React.Component {
 							</NavDropdown>
 						</Nav>
 						<Form inline>
-							<LinkContainer to='/login'>
+							{/* <LinkContainer to='/login' style={{ display: 'none' }}>
 								<Button variant='outline-success'>Login</Button>
-							</LinkContainer>
-							<LinkContainer to='/login'>
+							</LinkContainer> */}
+							<LinkContainer to='/login' style={{ display: this.state.display }}>
 								<Button variant='outline-danger' onClick={this.logout}>
 									Logout
 								</Button>

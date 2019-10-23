@@ -49,18 +49,23 @@ const routes = [
 	{
 		path: '/login',
 		component: Login
+	},
+	{
+		path: '/main',
+		component: Main
 	}
 ];
 
 const RouteWithSubRoutes = (route: any) => (
 	<Route path={route.path} render={(props) => <route.component {...props} routes={route.routes} />} />
 );
+
 export default class Routing extends React.Component {
 	render() {
 		return (
 			<Switch>
 				{routes.map((route: any) => <RouteWithSubRoutes key={route.path} {...route} />)}
-				<Route exact path='/' component={Main} /> 
+				<Route exact path='/' component={Login} /> 
 				<Redirect to='/404' />
 			</Switch>
 		);

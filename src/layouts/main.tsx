@@ -5,7 +5,7 @@ import iphone from '../css/images/iphone.png';
 export default class Main extends React.Component {
 	render() {
 		return (
-			<div className=''>
+			<div>
 				<div className='first'>
 					<div className='first-content'>
 						<div className='first-content-left'>
