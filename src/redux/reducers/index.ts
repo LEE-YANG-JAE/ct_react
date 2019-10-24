@@ -1,4 +1,8 @@
 import articleReducer from './article';
 import loginReducer from './login';
+import { combineReducers } from 'redux';
 
-export { articleReducer, loginReducer };
+export default combineReducers({
+    articleReducer,
+    loginReducer
+  })

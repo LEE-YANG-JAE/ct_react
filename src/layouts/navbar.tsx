@@ -3,8 +3,8 @@ import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
 import '../css/layouts/navbar.css';
 import { Link, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import { loginStore } from '../redux/store';
 import { logout } from '../redux/actions';
+import store from '../redux/store';
 
 class NavbarCompnent extends React.Component {
 	state = {
@@ -15,8 +15,8 @@ class NavbarCompnent extends React.Component {
 		display: 'block'
 	};
 	logout = () => {
-		loginStore.dispatch(logout());
-		localStorage.setItem('loginStore', JSON.stringify(loginStore.getState()));
+		store.dispatch(logout());
+		localStorage.setItem('loginStore', JSON.stringify(store.getState()));
 		window.updateTopMostParent(false);
 	};
 	componentDidMount() {
@@ -24,7 +24,7 @@ class NavbarCompnent extends React.Component {
 		if (localStorage.getItem('loginStore')) {
 			loginStatus = JSON.parse(localStorage.getItem('loginStore') as any);
 		} else {
-			localStorage.setItem('loginStore', JSON.stringify(loginStore.getState()));
+			localStorage.setItem('loginStore', JSON.stringify(store.getState().loginReducer));
 		}
 		if (loginStatus.logined) {
 			this.setState({ display: 'block' });
