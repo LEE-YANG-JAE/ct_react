@@ -16,7 +16,7 @@ class NavbarCompnent extends React.Component {
 	};
 	logout = () => {
 		store.dispatch(logout());
-		localStorage.setItem('loginStore', JSON.stringify(store.getState()));
+		localStorage.setItem('loginStore', JSON.stringify(store.getState().loginReducer));
 		window.updateTopMostParent(false);
 	};
 	componentDidMount() {

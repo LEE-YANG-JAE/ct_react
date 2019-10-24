@@ -64,7 +64,7 @@ class LoginComponent extends React.Component<PropsType> {
 					sessionInfo: 'yangjae'
 				};
 				store.dispatch(loginStatusChange(loginInfo));
-				localStorage.setItem('loginStore', JSON.stringify(store.getState().loginReducer));
+				localStorage.setItem('loginStore', JSON.stringify(store.getState().loginReducer.loginInfo));
 				window.updateTopMostParent(loginInfo); 
 				history.replace('/main');
 			}
