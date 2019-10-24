@@ -80,7 +80,7 @@ export default class Routing extends React.Component {
 				{shown ? (
 					<Switch>
 						{routes.map((route: any) => <RouteWithSubRoutes key={route.path} {...route} />)}
-						<Route exact path='/' component={Login} />
+						<Route exact path='/' component={Main} />
 						<Redirect to='/404' />
 					</Switch>
 				) : (
