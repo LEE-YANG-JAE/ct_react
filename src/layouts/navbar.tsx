@@ -28,8 +28,8 @@ class NavbarCompnent extends React.Component {
 	}
 	render() {
 		return (
-			<div style={{ display: this.state.display }}>
-				{this.state.display === 'block' ? <Redirect to='/main' /> : <Redirect to='/' />}
+			<div>
+				{this.state.display === 'block' ? <Redirect to='/main' /> : <Redirect to='/login' />}
 				<Navbar bg='dark' variant='dark' expand='lg'>
 					<Navbar.Brand>
 						<Link to='/main' style={this.state.linkStyle}>
@@ -66,9 +66,6 @@ class NavbarCompnent extends React.Component {
 							</NavDropdown>
 						</Nav>
 						<Form inline>
-							{/* <LinkContainer to='/login' style={{ display: 'none' }}>
-								<Button variant='outline-success'>Login</Button>
-							</LinkContainer> */}
 							<LinkContainer to='/login' style={{ display: this.state.display }}>
 								<Button variant='outline-danger' onClick={this.logout}>
 									Logout

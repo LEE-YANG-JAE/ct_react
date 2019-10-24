@@ -11,6 +11,7 @@ import Chapter2_5 from '../chapter2/Chapter2_5';
 import Chapter2_6 from '../chapter2/Chapter2_6';
 import Chapter3_1 from '../chapter3/Chapter3_1';
 import Login from './Login';
+import { store } from '../redux/store';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -56,18 +57,40 @@ const routes = [
 	}
 ];
 
+const routesWithNoLogin = [
+	{
+		path: '/login',
+		component: Login
+	},
+	{
+		path: '/404',
+		component: NotFound
+	},
+]
+
 const RouteWithSubRoutes = (route: any) => (
 	<Route path={route.path} render={(props) => <route.component {...props} routes={route.routes} />} />
 );
 
 export default class Routing extends React.Component {
 	render() {
+		const shown: any = store.getState().loginReducer.loginInfo.logined;
 		return (
-			<Switch>
-				{routes.map((route: any) => <RouteWithSubRoutes key={route.path} {...route} />)}
-				<Route exact path='/' component={Login} /> 
-				<Redirect to='/404' />
-			</Switch>
+			<div>
+				{shown ? (
+					<Switch>
+						{routes.map((route: any) => <RouteWithSubRoutes key={route.path} {...route} />)}
+						<Route exact path='/' component={Login} />
+						<Redirect to='/404' />
+					</Switch>
+				) : (
+					<Switch>
+						{routesWithNoLogin.map((route: any) => <RouteWithSubRoutes key={route.path} {...route} />)}
+						<Route exact path='/' component={Login} />
+						<Redirect to='/404' />
+					</Switch>
+				)}
+			</div>
 		);
 	}
 }
