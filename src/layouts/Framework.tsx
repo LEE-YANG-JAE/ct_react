@@ -4,13 +4,7 @@ import Routing from './Routing';
 import NavbarCompnent from './Navbar';
 import { store } from '../redux/store';
 
-class Framework extends React.Component {
-	constructor(props: any) {
-		super(props);
-		this.state = {
-			shown: false
-		};
-	}
+class Framework extends React.Component<any, any>  {
 	render() {
 		const shown: any = store.getState().loginReducer.loginInfo.logined;
 		return (
