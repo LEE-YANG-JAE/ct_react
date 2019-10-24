@@ -29,11 +29,6 @@ class LoginComponent extends React.Component<PropsType> {
 		super(props);
 		this.form = React.createRef();
 		this.modalAlert = React.createRef();
-		this.state = {
-			userId: '',
-			password: '',
-			submited: false
-		};
 	}
 
 	state = {
@@ -43,7 +38,7 @@ class LoginComponent extends React.Component<PropsType> {
 	};
 	// 입력 변화
 	inputChange = (e: any) => {
-		this.setState({ [e.target.name]: e.target.value, submited: false });
+		this.setState({ [e.target.name]: e.target.value });
 	};
 
 	// 키 다운 이벤트
@@ -70,7 +65,8 @@ class LoginComponent extends React.Component<PropsType> {
 				};
 				loginStore.dispatch(loginStatusChange(loginInfo));
 				localStorage.setItem('loginStore', JSON.stringify(loginStore.getState()));
-				history.push('/main');
+				window.updateTopMostParent(loginInfo); 
+				history.replace('/main');
 			}
 		} else {
 			this.modalAlert.current.handleShow('Login', 'Login Fail. Please check your information.');
@@ -86,14 +82,7 @@ class LoginComponent extends React.Component<PropsType> {
 		}
 	}
 	render() {
-		let userIdError: any;
-		let passwordError: any;
-		if (!this.state.userId.length && this.state.submited) {
-			userIdError = <span style={{ color: 'red' }}>Please input your ID</span>;
-		}
-		if (!this.state.password.length && this.state.submited) {
-			passwordError = <span style={{ color: 'red' }}>Please input your Password</span>;
-		}
+		const { userId, password, submited } = this.state;
 		return (
 			<div className={loginStyle.body}>
 				<ModalAlert ref={this.modalAlert} />
@@ -109,8 +98,9 @@ class LoginComponent extends React.Component<PropsType> {
 							onChange={this.inputChange}
 						/>
 					</div>
-					{userIdError}
-
+					{
+						submited && !userId && <span style={{ color: 'red' }}>Please input your ID</span>
+					}
 					<div className={loginStyle.txtb}>
 						<input
 							type='password'
@@ -120,7 +110,9 @@ class LoginComponent extends React.Component<PropsType> {
 							onChange={this.inputChange}
 						/>
 					</div>
-					{passwordError}
+					{
+						submited && !password && <span style={{ color: 'red' }}>Please input your Password</span>
+					}
 
 					<input type='button' className={loginStyle.logbtn} onClick={this.loginBtn} value='Login' />
 					<div className={loginStyle.bottomText}>

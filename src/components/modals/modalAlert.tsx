@@ -34,7 +34,7 @@ export default class ModalAlert extends React.Component {
 					</Modal.Header>
 					<Modal.Body>{this.body}</Modal.Body>
 					<Modal.Footer>
-						<div style={{ width: '150px;', margin: 'auto' }}>
+						<div style={{ width: '100px', margin: 'auto' }}>
 							<Button
 								variant='primary'
 								onClick={() => {

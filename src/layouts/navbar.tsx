@@ -12,12 +12,12 @@ class NavbarCompnent extends React.Component {
 			color: 'inherit',
 			textDecoration: 'inherit'
 		},
-		display: 'none'
+		display: 'block'
 	};
 	logout = () => {
 		loginStore.dispatch(logout());
 		localStorage.setItem('loginStore', JSON.stringify(loginStore.getState()));
-		this.setState({ display: 'none' });
+		window.updateTopMostParent(false);
 	};
 	componentDidMount() {
 		let loginStatus: any;
@@ -35,7 +35,7 @@ class NavbarCompnent extends React.Component {
 	render() {
 		return (
 			<div style={{ display: this.state.display }}>
-				{this.state.display === 'block' ? <Redirect to='/main' /> : <Redirect to='/login' />}
+				{this.state.display === 'block' ? <Redirect to='/main' /> : <Redirect to='/' />}
 				<Navbar bg='dark' variant='dark' expand='lg'>
 					<Navbar.Brand>
 						<Link to='/main' style={this.state.linkStyle}>
