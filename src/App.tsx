@@ -11,7 +11,8 @@ class App extends React.Component {
 		};
 	}
 	render() {
-		const {shown} : any = this.state;
+		const loginInfo = JSON.parse(localStorage.getItem('loginStore') as any);
+		const shown : any = loginInfo.logined;
 		return (
 			<div>
 				<Router>
