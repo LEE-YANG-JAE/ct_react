@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Routing from './layouts/Routing';
-import NavbarComp from './layouts/Navbar';
+import { store, persistor } from './redux/store';
+import Framework from './layouts/Framework';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 class App extends React.Component {
 	constructor(props: any) {
@@ -11,14 +12,13 @@ class App extends React.Component {
 		};
 	}
 	render() {
-		const loginInfo = JSON.parse(localStorage.getItem('loginStore') as any);
-		const shown : any = loginInfo.logined;
 		return (
 			<div>
-				<Router>
-					{shown ? <NavbarComp /> : <div></div> }
-					<Routing />
-				</Router>
+				<Provider store={store}>
+					<PersistGate loading={null} persistor={persistor}>
+						<Framework />
+					</PersistGate>
+				</Provider>
 			</div>
 		);
 	}

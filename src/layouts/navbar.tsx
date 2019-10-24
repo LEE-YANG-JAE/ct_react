@@ -4,7 +4,7 @@ import '../css/layouts/navbar.css';
 import { Link, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../redux/actions';
-import store from '../redux/store';
+import { store } from '../redux/store';
 
 class NavbarCompnent extends React.Component {
 	state = {
@@ -16,16 +16,10 @@ class NavbarCompnent extends React.Component {
 	};
 	logout = () => {
 		store.dispatch(logout());
-		localStorage.setItem('loginStore', JSON.stringify(store.getState().loginReducer));
-		window.updateTopMostParent(false);
+		window.updateTopMostParent(store.getState().loginReducer.loginInfo);
 	};
 	componentDidMount() {
-		let loginStatus: any;
-		if (localStorage.getItem('loginStore')) {
-			loginStatus = JSON.parse(localStorage.getItem('loginStore') as any);
-		} else {
-			localStorage.setItem('loginStore', JSON.stringify(store.getState().loginReducer));
-		}
+		let loginStatus: any = store.getState().loginReducer.loginInfo;
 		if (loginStatus.logined) {
 			this.setState({ display: 'block' });
 		} else {

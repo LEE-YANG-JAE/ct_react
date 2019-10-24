@@ -6,7 +6,7 @@ import loginStyle from '../css/layouts/login.module.css';
 import Util from '../utils/util';
 import ModalAlert from '../components/modals/ModalAlert';
 import { loginStatusChange } from '../redux/actions';
-import store from '../redux/store';
+import {store } from '../redux/store';
 
 // https://stackoverflow.com/questions/48219432/react-router-typescript-errors-on-withrouter-after-updating-version
 // https://dev.to/kozakrisz/react-router---how-to-pass-history-object-to-a-component-3l0j
@@ -64,7 +64,6 @@ class LoginComponent extends React.Component<PropsType> {
 					sessionInfo: 'yangjae'
 				};
 				store.dispatch(loginStatusChange(loginInfo));
-				localStorage.setItem('loginStore', JSON.stringify(store.getState().loginReducer.loginInfo));
 				window.updateTopMostParent(loginInfo); 
 				history.replace('/main');
 			}
