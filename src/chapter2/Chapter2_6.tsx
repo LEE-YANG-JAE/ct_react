@@ -103,23 +103,27 @@ export default class Chapter2_6 extends React.Component {
 									/>
 								</Col>
 							</Form.Group>
-							<Form.Group as={Row}>
-								<Form.Label column sm='4'>
-									At what age would you like to retire?
-								</Form.Label>
-								<Col sm='8'>
-									<input
-										type='text'
-										id='retireAge'
-										name='retireAge'
-										className='form-control'
-										value={this.state.retireAge}
-										onChange={this.inputChange}
-										onKeyDown={this.inputKeyDown}
-										pattern='[0-9]*'
-									/>
-								</Col>
-							</Form.Group>
+							{this.state.currentAge ? (
+								<Form.Group as={Row}>
+									<Form.Label column sm='4'>
+										At what age would you like to retire?
+									</Form.Label>
+									<Col sm='8'>
+										<input
+											type='text'
+											id='retireAge'
+											name='retireAge'
+											className='form-control'
+											value={this.state.retireAge}
+											onChange={this.inputChange}
+											onKeyDown={this.inputKeyDown}
+											pattern='[0-9]*'
+										/>
+									</Col>
+								</Form.Group>
+							) : (
+								<div />
+							)}
 						</Form>
 						<div style={{ width: '150px', margin: 'auto' }}>
 							<ButtonToolbar>

@@ -9,7 +9,7 @@ export default class Chapter2_3 extends React.Component {
 	private util: Util = new Util();
 	private saveMap = new Map();
 	private totalString: string = '';
-	
+
 	// https://stackoverflow.com/questions/37949981/call-child-method-from-parent
 	constructor(props: any) {
 		super(props);
@@ -37,10 +37,10 @@ export default class Chapter2_3 extends React.Component {
 
 	// 내용 입력 후 결과
 	makeResult = () => {
-		let boolCheck:boolean = true;
+		let boolCheck: boolean = true;
 		let keyString: string = '';
 		let checkArray: Array<string> = [];
-		
+
 		const resultDom: any = document.getElementById('result');
 		Object.entries(this.state).forEach(([ key, value ]) => {
 			if (this.util.notNullCheck(value) === false) {
@@ -57,7 +57,7 @@ export default class Chapter2_3 extends React.Component {
 			resultDom.style.display = 'none';
 			return;
 		}
-		
+
 		const revisedQuote = '"'.concat(this.state.quote).concat('."');
 		const revisedWriter = this.state.writer.concat(' says, ');
 		const resultSentenct = revisedWriter + revisedQuote;
@@ -65,11 +65,11 @@ export default class Chapter2_3 extends React.Component {
 		this.saveMap.set(this.state.writer, this.state.quote);
 		resultDom.style.display = 'block';
 
-		this.setState({total: ''});
+		this.setState({ total: '' });
 		this.totalString = '';
-		this.saveMap.forEach((value, key)=>{
+		this.saveMap.forEach((value, key) => {
 			this.totalString += `${key} : ${value}\n`;
-			this.setState({total: this.totalString});
+			this.setState({ total: this.totalString });
 		});
 	};
 
@@ -115,16 +115,22 @@ export default class Chapter2_3 extends React.Component {
 					/>
 					<br />
 					<br />
-					Who said it? &nbsp;<input
-						type='text'
-						id='writer'
-						name='writer'
-						value={this.state.writer}
-						onChange={this.inputChange}
-						onKeyDown={this.inputKeyDown}
-					/>
-					<br />
-					<br />
+					{this.state.quote ? (
+						<div>
+							Who said it? &nbsp;<input
+								type='text'
+								id='writer'
+								name='writer'
+								value={this.state.writer}
+								onChange={this.inputChange}
+								onKeyDown={this.inputKeyDown}
+							/>
+							<br />
+							<br />
+						</div>
+					) : (
+						<div />
+					)}
 					<button className='btn btn-info' id='makeResult' onClick={this.makeResult}>
 						결과 확인
 					</button>
@@ -145,7 +151,9 @@ export default class Chapter2_3 extends React.Component {
 						disabled
 					/>
 					<br />
-					<Badge pill variant="primary">지금까지의 입력</Badge>
+					<Badge pill variant='primary'>
+						지금까지의 입력
+					</Badge>
 					<br />
 					<br />
 					<textarea
@@ -155,7 +163,7 @@ export default class Chapter2_3 extends React.Component {
 						cols={50}
 						value={this.state.total}
 						onChange={this.inputChange}
-						style={{padding:'5px'}}
+						style={{ padding: '5px' }}
 						disabled
 					/>
 				</div>

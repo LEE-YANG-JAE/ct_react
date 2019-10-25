@@ -1,0 +1,15 @@
+.exForm {
+	width: 80%;
+	margin: auto;
+}
+
+.exButton {
+	width: 150px;
+	margin: auto;
+}
+
+.exSelect {
+	width: 200px;
+	margin: auto;
+	text-align: center;
+}

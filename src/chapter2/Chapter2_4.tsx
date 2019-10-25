@@ -75,7 +75,7 @@ export default class Chapter2_4 extends React.Component {
 		}
 		return true;
 	}
-	
+
 	// 초기화
 	clearContents = () => {
 		this.setState({
@@ -121,70 +121,86 @@ export default class Chapter2_4 extends React.Component {
 									/>
 								</Col>
 							</Form.Group>
-							<Form.Group as={Row}>
-								<Form.Label column sm='4'>
-									Enter a verb:
-								</Form.Label>
-								<Col sm='8'>
-									<input
-										type='text'
-										id='verb'
-										name='verb'
-										className='form-control'
-										value={this.state.verb}
-										onChange={this.inputChange}
-										onKeyDown={this.inputKeyDown}
-									/>
-								</Col>
-							</Form.Group>
-							<Form.Group as={Row}>
-								<Form.Label column sm='4'>
-									Enter a adjective:
-								</Form.Label>
-								<Col sm='8'>
-									<input
-										type='text'
-										id='adjective'
-										name='adjective'
-										className='form-control'
-										value={this.state.adjective}
-										onChange={this.inputChange}
-										onKeyDown={this.inputKeyDown}
-									/>
-								</Col>
-							</Form.Group>
-							<Form.Group as={Row}>
-								<Form.Label column sm='4'>
-									Enter a adverb:
-								</Form.Label>
-								<Col sm='8'>
-									<input
-										type='text'
-										id='adverb'
-										name='adverb'
-										className='form-control'
-										value={this.state.adverb}
-										onChange={this.inputChange}
-										onKeyDown={this.inputKeyDown}
-									/>
-								</Col>
-							</Form.Group>
-							<Form.Group as={Row}>
-								<Form.Label column sm='4'>
-									Enter a adverb2:
-								</Form.Label>
-								<Col sm='8'>
-									<input
-										type='text'
-										id='adjective2'
-										name='adjective2'
-										className='form-control'
-										value={this.state.adjective2}
-										onChange={this.inputChange}
-										onKeyDown={this.inputKeyDown}
-									/>
-								</Col>
-							</Form.Group>
+							{this.state.noun ? (
+								<Form.Group as={Row}>
+									<Form.Label column sm='4'>
+										Enter a verb:
+									</Form.Label>
+									<Col sm='8'>
+										<input
+											type='text'
+											id='verb'
+											name='verb'
+											className='form-control'
+											value={this.state.verb}
+											onChange={this.inputChange}
+											onKeyDown={this.inputKeyDown}
+										/>
+									</Col>
+								</Form.Group>
+							) : (
+								<div />
+							)}
+							{this.state.verb ? (
+								<Form.Group as={Row}>
+									<Form.Label column sm='4'>
+										Enter a adjective:
+									</Form.Label>
+									<Col sm='8'>
+										<input
+											type='text'
+											id='adjective'
+											name='adjective'
+											className='form-control'
+											value={this.state.adjective}
+											onChange={this.inputChange}
+											onKeyDown={this.inputKeyDown}
+										/>
+									</Col>
+								</Form.Group>
+							) : (
+								<div />
+							)}
+							{this.state.adjective ? (
+								<Form.Group as={Row}>
+									<Form.Label column sm='4'>
+										Enter a adverb:
+									</Form.Label>
+									<Col sm='8'>
+										<input
+											type='text'
+											id='adverb'
+											name='adverb'
+											className='form-control'
+											value={this.state.adverb}
+											onChange={this.inputChange}
+											onKeyDown={this.inputKeyDown}
+										/>
+									</Col>
+								</Form.Group>
+							) : (
+								<div />
+							)}
+							{this.state.adverb ? (
+								<Form.Group as={Row}>
+									<Form.Label column sm='4'>
+										Enter a adverb2:
+									</Form.Label>
+									<Col sm='8'>
+										<input
+											type='text'
+											id='adjective2'
+											name='adjective2'
+											className='form-control'
+											value={this.state.adjective2}
+											onChange={this.inputChange}
+											onKeyDown={this.inputKeyDown}
+										/>
+									</Col>
+								</Form.Group>
+							) : (
+								<div />
+							)}
 						</Form>
 						<ButtonToolbar style={{ float: 'right' }}>
 							<Button variant='primary' onClick={this.makeResult}>

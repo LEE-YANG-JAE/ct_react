@@ -45,7 +45,7 @@ export default class Chapter2_5 extends React.Component {
 		}
 	};
 
-	// 내용 입력 후 결과
+	// 내용 입력 후 실시간 결과
 	makeResult2 = () => {
 		if (this.util.notNullCheck(this.state.first) && this.util.notNullCheck(this.state.second)) {
 			const first: number = parseInt(this.state.first);

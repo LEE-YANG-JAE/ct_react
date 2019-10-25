@@ -20,6 +20,10 @@ const routes = [
 		component: NotFound
 	},
 	{
+		path: '/main',
+		component: Main
+	},
+	{
 		path: '/chapter2/excercise1',
 		component: Chapter2_1
 	},
@@ -47,14 +51,7 @@ const routes = [
 		path: '/chapter3/excercise1',
 		component: Chapter3_1
 	},
-	{
-		path: '/login',
-		component: Login
-	},
-	{
-		path: '/main',
-		component: Main
-	}
+	
 ];
 
 const routesWithNoLogin = [

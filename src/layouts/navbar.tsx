@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
 import '../css/layouts/navbar.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../redux/actions';
 import { store } from '../redux/store';
@@ -29,7 +29,6 @@ class NavbarCompnent extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.display === 'block' ? <Redirect to='/main' /> : <Redirect to='/login' />}
 				<Navbar bg='dark' variant='dark' expand='lg'>
 					<Navbar.Brand>
 						<Link to='/main' style={this.state.linkStyle}>
