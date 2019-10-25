@@ -1,19 +1,15 @@
 import React from 'react';
 import { Card, Form, Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
-import AlertComponent from '../components/alerts/AlertComponent';
-import ModalAlert from '../components/modals/ModalAlert';
 import '../css/common.css';
 import Util from '../utils/util';
 
 export default class Chapter3_1 extends React.Component {
 	private util: Util = new Util();
-	private child: any;
-	private modalAlert: any;
+	private form: any;
 	private PI: number = 0.09290304;
 	constructor(props: any) {
 		super(props);
-		this.child = React.createRef();
-		this.modalAlert = React.createRef();
+		this.form = React.createRef();
 	}
 	// 상태
 	state = {
@@ -27,7 +23,7 @@ export default class Chapter3_1 extends React.Component {
 	inputChange = (e: any) => {
 		if (e.target.validity.valid) {
 			this.setState({ [e.target.name]: e.target.value });
-			const f = this.util.getAllFormValues(this.child.current);
+			const f = this.util.getAllFormValues(this.form.current);
 			if (this.util.notNullCheck(f.width) && this.util.notNullCheck(f.length)) {
 				this.makeResult2();
 			}
@@ -43,7 +39,7 @@ export default class Chapter3_1 extends React.Component {
 
 	// 내용 입력 후 결과
 	makeResult = () => {
-		const f = this.util.getAllFormValues(this.child.current);
+		const f = this.util.getAllFormValues(this.form.current);
 		if (this.util.notNullCheck(f.width) && this.util.notNullCheck(f.length)) {
 			const width = parseInt(this.state.width);
 			const length = parseInt(this.state.length);
@@ -64,7 +60,7 @@ export default class Chapter3_1 extends React.Component {
 
 	// 내용 입력 후 결과
 	makeResult2 = () => {
-		const f = this.util.getAllFormValues(this.child.current);
+		const f = this.util.getAllFormValues(this.form.current);
 		if (this.util.notNullCheck(f.width) && this.util.notNullCheck(f.length)) {
 			const width = parseInt(f.width);
 			const length = parseInt(f.length);
@@ -116,7 +112,7 @@ export default class Chapter3_1 extends React.Component {
 					</Card>
 					<br />
 					<div className='exForm'>
-						<Form ref={this.child}>
+						<Form ref={this.form}>
 							<Form.Group controlId='chooseType' className='exSelect'>
 								<Form.Label>Choose the type you want.</Form.Label>
 								<Form.Control as='select' onChange={this.selectChange} name='chooseType'>
