@@ -4,14 +4,19 @@ import '../css/common.css';
 import Util from '../utils/util';
 
 export default class Chapter3_1 extends React.Component {
+	
+	/** 클래스내 전역 변수 영역 **/
 	private util: Util = new Util();
 	private form: any;
 	private PI: number = 0.09290304;
+
+	/** 생성자 **/
 	constructor(props: any) {
 		super(props);
 		this.form = React.createRef();
 	}
-	// 상태
+
+	/** 상태 영역 **/
 	state = {
 		length: '',
 		width: '',
@@ -19,6 +24,8 @@ export default class Chapter3_1 extends React.Component {
 		result2: '',
 		chooseType: 'feet'
 	};
+
+	/** 이벤트 리스너 영역 **/
 	// 입력 변화
 	inputChange = (e: any) => {
 		if (e.target.validity.valid) {
@@ -78,6 +85,8 @@ export default class Chapter3_1 extends React.Component {
 			this.setState({ result2: result });
 		}
 	};
+
+	// 선택창 변경 이벤트
 	selectChange = (e: any) => {
 		if (this.state.chooseType !== e.target.value) {
 			const value = e.target.value;
@@ -85,7 +94,8 @@ export default class Chapter3_1 extends React.Component {
 			this.makeResult2();
 		}
 	};
-	// 초기화
+
+	// 초기화 버튼 클릭시
 	clearContents = () => {
 		this.setState({
 			length: '',
@@ -94,7 +104,9 @@ export default class Chapter3_1 extends React.Component {
 			result2: ''
 		});
 	};
-	// View
+
+
+	/** View **/
 	render() {
 		return (
 			<div>
