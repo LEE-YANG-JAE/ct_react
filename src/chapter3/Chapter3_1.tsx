@@ -4,7 +4,6 @@ import '../css/common.css';
 import Util from '../utils/util';
 
 export default class Chapter3_1 extends React.Component {
-	
 	/** 클래스내 전역 변수 영역 **/
 	private util: Util = new Util();
 	private form: any;
@@ -65,7 +64,7 @@ export default class Chapter3_1 extends React.Component {
 		}
 	};
 
-	// 내용 입력 후 결과
+	// 내용 입력 후 자동 입력 결과
 	makeResult2 = () => {
 		const f = this.util.getAllFormValues(this.form.current);
 		if (this.util.notNullCheck(f.width) && this.util.notNullCheck(f.length)) {
@@ -105,7 +104,6 @@ export default class Chapter3_1 extends React.Component {
 		});
 	};
 
-
 	/** View **/
 	render() {
 		return (
@@ -125,7 +123,7 @@ export default class Chapter3_1 extends React.Component {
 					<br />
 					<div className='exForm'>
 						<Form ref={this.form}>
-							<Form.Group controlId='chooseType' className='exSelect'>
+							<Form.Group controlId='chooseType' className='exForm__select exForm__select--center'>
 								<Form.Label>Choose the type you want.</Form.Label>
 								<Form.Control as='select' onChange={this.selectChange} name='chooseType'>
 									<option value='feet'>Feet</option>
@@ -183,27 +181,24 @@ export default class Chapter3_1 extends React.Component {
 								</Col>
 							</Form.Group>
 						</Form>
-						<div className='exButton'>
-							<ButtonToolbar>
-								<Button variant='primary' onClick={this.makeResult}>
-									입력
-								</Button>&nbsp;
-								<Button variant='danger' onClick={this.clearContents}>
-									초기화
-								</Button>
-							</ButtonToolbar>
-							<br />
-						</div>
+						<ButtonToolbar className='exForm__buttonToolBar'>
+							<Button variant='primary' onClick={this.makeResult}>
+								입력
+							</Button>&nbsp;
+							<Button variant='danger' onClick={this.clearContents}>
+								초기화
+							</Button>
+						</ButtonToolbar>
+						<br />
 						<Form.Group controlId='result'>
 							<Form.Label>결과</Form.Label>
 							<textarea
 								id='result'
 								name='result'
 								rows={4}
-								className='form-control'
+								className='form-control exForm__textarea--noresize'
 								disabled
 								value={this.state.result}
-								style={{ resize: 'none' }}
 							/>
 						</Form.Group>
 						<br />
@@ -213,10 +208,9 @@ export default class Chapter3_1 extends React.Component {
 								id='result2'
 								name='result2'
 								rows={4}
-								className='form-control'
+								className='form-control exForm__textarea--noresize'
 								disabled
 								value={this.state.result2}
-								style={{ resize: 'none' }}
 							/>
 						</Form.Group>
 					</div>
