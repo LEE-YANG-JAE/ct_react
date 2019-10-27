@@ -4,6 +4,8 @@ import iphone from '../css/images/iphone.png';
 
 export default class Main extends React.Component {
 	render() {
+		console.log(process.env.REACT_APP_API_URL);
+		console.log(process.env.REACT_APP_API_URL2);
 		return (
 			<div>
 				<article className='first'>

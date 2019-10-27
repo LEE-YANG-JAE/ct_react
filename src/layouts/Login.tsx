@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
-import loginStyle from '../css/layouts/login.module.css';
+import '../css/layouts/login.css';
 import Util from '../utils/util';
 import ModalAlert from '../components/modals/ModalAlert';
 import { loginStatusChange } from '../redux/actions';
@@ -83,12 +83,12 @@ class LoginComponent extends React.Component<PropsType> {
 	render() {
 		const { userId, password, submited } = this.state;
 		return (
-			<div className={loginStyle.body}>
+			<div className='login'>
 				<ModalAlert ref={this.modalAlert} />
-				<form className={loginStyle.loginForm} ref={this.form}>
+				<form className='login__form' ref={this.form}>
 					<h1>Login</h1>
 
-					<div className={loginStyle.txtb}>
+					<div className='login__txtb'>
 						<input
 							type='text'
 							placeholder='Username'
@@ -100,7 +100,7 @@ class LoginComponent extends React.Component<PropsType> {
 					{
 						submited && !userId && <span style={{ color: 'red' }}>Please input your ID</span>
 					}
-					<div className={loginStyle.txtb}>
+					<div className='login__txtb'>
 						<input
 							type='password'
 							placeholder='Password'
@@ -113,8 +113,8 @@ class LoginComponent extends React.Component<PropsType> {
 						submited && !password && <span style={{ color: 'red' }}>Please input your Password</span>
 					}
 
-					<input type='button' className={loginStyle.logbtn} onClick={this.loginBtn} value='Login' />
-					<div className={loginStyle.bottomText}>
+					<input type='button' className='login__btn' onClick={this.loginBtn} value='Login' />
+					<div className='login__bottomText'>
 						Don't have account? <Link to='/chapter2/excercise1'>Sign Up</Link>
 					</div>
 				</form>

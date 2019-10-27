@@ -1,4 +1,4 @@
-.body {
+.login {
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
@@ -8,7 +8,7 @@
 	background-image: linear-gradient(120deg, #3498db, #8e44ad);
 }
 
-.loginForm {
+.login__form {
 	width: 360px;
 	background: #f1f1f1;
 	height: 580px;
@@ -20,18 +20,18 @@
 	transform: translate(-50%, -50%);
 }
 
-.loginForm h1 {
+.login__form h1 {
 	text-align: center;
 	margin-bottom: 60px;
 }
 
-.txtb {
+.login__txtb {
 	border-bottom: 2px solid #adadad;
 	position: relative;
 	margin: 10px 0;
 }
 
-.txtb input {
+.login__txtb input {
 	font-size: 15px;
 	color: #333;
 	border: none;
@@ -42,7 +42,7 @@
 	height: 40px;
 }
 
-.logbtn {
+.login__btn {
 	display: block;
 	width: 100%;
 	height: 50px;
@@ -55,11 +55,11 @@
 	transition: .5s;
 }
 
-.logbtn:hover {
+.login__btn:hover {
 	background-position: right;
 }
 
-.bottomText {
+.login__bottomText {
 	margin-top: 60px;
 	text-align: center;
 	font-size: 13px;
