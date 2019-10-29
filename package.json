@@ -19,6 +19,7 @@
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "awesome-typescript-loader": "^5.2.1",
+    "axios": "^0.19.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
@@ -90,8 +91,8 @@
     "start2": "webpack-dev-server --hot --mode development --env.ENVIRONMENT=development --config config/webpack.config.dev.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "dev": "webpack --env.ENVIRONMENT=development --config config/webpack.config.dev.js",
-    "prod": "webpack --env.ENVIRONMENT=production --config config/webpack.config.prod.js"
+    "dev": "webpack --env.ENVIRONMENT=dev --config config/webpack.config.dev.js",
+    "prod": "webpack --env.ENVIRONMENT=prod --config config/webpack.config.prod.js"
   },
   "eslintConfig": {
     "extends": "react-app"

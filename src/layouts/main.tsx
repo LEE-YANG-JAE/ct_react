@@ -1,8 +1,29 @@
 import React from 'react';
 import '../css/layouts/main.css';
 import iphone from '../css/images/iphone.png';
+import axios from 'axios';
 
 export default class Main extends React.Component {
+	test = () => {
+		const info = {
+			headers: {
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+				"Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+			  },
+		}
+		axios
+			.post(
+				process.env.REACT_APP_API_URL + `/api/login`,
+				{ userId: 'admin', password: '1234', system: 'system' }, info
+			)
+			.then((res) => {
+				alert();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 	render() {
 		console.log(process.env.REACT_APP_API_URL);
 		console.log(process.env.REACT_APP_API_URL2);
@@ -18,7 +39,7 @@ export default class Main extends React.Component {
 								We offer great landing pages<br />for most of the business
 							</p>
 							<div>
-								<button className='btn btn-dark btn--big'>Show More</button>
+								<button className='btn btn-dark btn--big' onClick={this.test}>Show More</button>
 							</div>
 						</div>
 						<div className='first__right'>

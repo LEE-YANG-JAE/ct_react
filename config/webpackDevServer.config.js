@@ -82,14 +82,19 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     proxy: {
-			'/NeoMES-Server': {
+			'/MyServer': {
 				target: {
 					host: 'localhost',
 					protocol: 'http:',
 					port: 8080
 				}
 			}
-		},
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    },
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
         // This registers user provided middleware for proxy reasons

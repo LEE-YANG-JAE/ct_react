@@ -89,7 +89,8 @@ const config = {
 		new HtmlWebpackPlugin({
 			template: 'public/index.html',
 			inject: true,
-			appMountId: 'root'
+			appMountId: 'root',
+			favicon: "public/favicon.ico"
     })
 	],
 	optimization: {
