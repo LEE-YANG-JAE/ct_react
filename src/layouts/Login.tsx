@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
-import '../css/layouts/login.css';
 import Util from '../utils/util';
 import ModalAlert from '../components/modals/ModalAlert';
 import { loginStatusChange } from '../redux/actions';

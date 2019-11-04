@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
-import '../css/layouts/navbar.css';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../redux/actions';
@@ -61,6 +60,9 @@ class NavbarCompnent extends React.Component {
 							<NavDropdown title='연산' id='basic-nav-dropdown'>
 								<LinkContainer to='/chapter3/excercise1'>
 									<NavDropdown.Item>직사각형 방의 면적</NavDropdown.Item>
+								</LinkContainer>
+								<LinkContainer to='/chapter3/excercise2'>
+									<NavDropdown.Item>피자 파티</NavDropdown.Item>
 								</LinkContainer>
 							</NavDropdown>
 						</Nav>

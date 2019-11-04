@@ -1,7 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import { store } from '../redux/store';
 import Main from './Main';
+import Login from './Login';
 import NotFound from './errors/404';
 import Chapter2_1 from '../chapter2/Chapter2_1';
 import Chapter2_2 from '../chapter2/Chapter2_2';
@@ -10,8 +12,7 @@ import Chapter2_4 from '../chapter2/Chapter2_4';
 import Chapter2_5 from '../chapter2/Chapter2_5';
 import Chapter2_6 from '../chapter2/Chapter2_6';
 import Chapter3_1 from '../chapter3/Chapter3_1';
-import Login from './Login';
-import { store } from '../redux/store';
+import Chapter3_2 from '../chapter3/Chapter3_2y';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -50,6 +51,10 @@ const routes = [
 	{
 		path: '/chapter3/excercise1',
 		component: Chapter3_1
+	},
+	{
+		path: '/chapter3/excercise2',
+		component: Chapter3_2
 	},
 	
 ];

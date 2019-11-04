@@ -1,0 +1,30 @@
+/* 
+BEM — Block Element Modifier methodology
+*/
+.exForm {
+	width: 80%;
+	margin: auto;
+}
+
+.exForm__buttonToolBar {
+	width: 150px;
+	margin: auto;
+}
+
+.exForm__button--center {
+    width: 150px;
+	margin: auto;
+}
+
+.exForm__select {
+	width: 240px;
+	margin: auto;
+}
+
+.exForm__select--center {
+	text-align: center;
+}
+
+.exForm__textarea--noresize {
+	resize: none;
+}

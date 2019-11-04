@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Form, Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
-import '../css/common.css';
 import Util from '../utils/util';
 
 export default class Chapter3_1 extends React.Component {

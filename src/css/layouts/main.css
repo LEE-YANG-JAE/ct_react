@@ -1,8 +1,3 @@
-/* 
-BEM — Block Element Modifier methodology
-https://stackoverflow.com/questions/22566179/bem-block-naming-nesting
-*/
-
 .first {
 	background: #2347ce;
 	background: -moz-linear-gradient(top, #2347ce 0%, #1c6ea4 50%, #8293c5 100%);

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/common.css';
 
 // https://stackoverflow.com/questions/12709074/how-do-you-explicitly-set-a-new-property-on-window-in-typescript
 // https://blog.cloudboost.io/updating-state-of-a-parentless-component-in-react-e6b43047c91e
