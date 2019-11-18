@@ -2,8 +2,7 @@ import React from 'react';
 import { Card, Form, Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
 import Util from '../utils/util';
 import AlertComponent from '../components/alerts/AlertComponent';
-import NewWindow from 'react-new-window';
-import PizzaCheckPopup from './PizzaCheckPopup';
+import PizzaCheckPopup from '../components/popup/PizzaCheckPopup';
 
 export default class Chapter3_2 extends React.Component {
 	/** 클래스내 전역 변수 영역 **/
@@ -11,7 +10,6 @@ export default class Chapter3_2 extends React.Component {
 	private alert: any;
 	private secondInput: any;
 	private thirdInput: any;
-	private popupFeatures: any;
 
 	/** 생성자 **/
 	constructor(props: any) {
@@ -19,7 +17,6 @@ export default class Chapter3_2 extends React.Component {
 		this.alert = React.createRef();
 		this.secondInput = React.createRef();
 		this.thirdInput = React.createRef();
-		this.popupFeatures = { width: '300px', height: '300px' };
 	}
 
 	/** 상태 영역 **/
@@ -85,12 +82,12 @@ export default class Chapter3_2 extends React.Component {
 		this.setState({ popupShow: 'block' });
 	};
 
-	unloadFunction = () => {
+	closePopup = () => {
 		this.setState({ popupShow: 'none' });
 	}
 
 	pizzaCnt = (value: any) => {
-		const message = `You should buy ${value} pizzas to eat`;
+		const message = `You should buy ${value} pizzas with 8 pieces to eat.`;
 		this.setState({ result: message });
 	}
 
@@ -110,9 +107,7 @@ export default class Chapter3_2 extends React.Component {
 			<div>
 				<AlertComponent ref={this.alert} />
 				{this.state.popupShow === 'block' && (
-					<NewWindow title='Pizza Check' features={this.popupFeatures} onUnload={this.unloadFunction}>
-						<PizzaCheckPopup functionTest={this.pizzaCnt} />
-					</NewWindow>
+					<PizzaCheckPopup functionTest={this.pizzaCnt} popupShow={this.closePopup}/>
 				)}
 				<div className='container'>
 					<br />
