@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Form, Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
 import Util from '../utils/util';
 import AlertComponent from '../components/alerts/AlertComponent';
+import NewWindow from 'react-new-window';
+import PizzaCheckPopup from './PizzaCheckPopup';
 
 export default class Chapter3_2 extends React.Component {
 	/** 클래스내 전역 변수 영역 **/
@@ -9,6 +11,7 @@ export default class Chapter3_2 extends React.Component {
 	private alert: any;
 	private secondInput: any;
 	private thirdInput: any;
+	private popupFeatures: any;
 
 	/** 생성자 **/
 	constructor(props: any) {
@@ -16,6 +19,7 @@ export default class Chapter3_2 extends React.Component {
 		this.alert = React.createRef();
 		this.secondInput = React.createRef();
 		this.thirdInput = React.createRef();
+		this.popupFeatures = { width: '300px', height: '300px' };
 	}
 
 	/** 상태 영역 **/
@@ -23,7 +27,8 @@ export default class Chapter3_2 extends React.Component {
 		people: '',
 		pizza: '',
 		piece: '',
-		result: ''
+		result: '',
+		popupShow: 'none'
 	};
 
 	/** 이벤트 리스너 영역 **/
@@ -76,6 +81,19 @@ export default class Chapter3_2 extends React.Component {
 		}
 	};
 
+	openPopup = () => {
+		this.setState({ popupShow: 'block' });
+	};
+
+	unloadFunction = () => {
+		this.setState({ popupShow: 'none' });
+	}
+
+	pizzaCnt = (value: any) => {
+		const message = `You should buy ${value} pizzas to eat`;
+		this.setState({ result: message });
+	}
+
 	// 초기화 버튼 클릭시
 	clearContents = () => {
 		this.setState({
@@ -91,6 +109,11 @@ export default class Chapter3_2 extends React.Component {
 		return (
 			<div>
 				<AlertComponent ref={this.alert} />
+				{this.state.popupShow === 'block' && (
+					<NewWindow title='Pizza Check' features={this.popupFeatures} onUnload={this.unloadFunction}>
+						<PizzaCheckPopup functionTest={this.pizzaCnt} />
+					</NewWindow>
+				)}
 				<div className='container'>
 					<br />
 					<Card>
@@ -100,10 +123,16 @@ export default class Chapter3_2 extends React.Component {
 							<Card.Text>
 								피자를 정확하게 나누는 프로그램.<br />
 								사람 수, 피자 개수, 조각 개수를 입력 받는데, 이때 조각 개수는 짝수여야 한다.<br />
-								일단 한 사람이 받게 되는 피자 조객 개수를 출력. 그리고 남는 조각이 있다면 그 개수도 나타냄.
+								일단 한 사람이 받게 되는 피자 조각 개수를 출력. 그리고 남는 조각이 있다면 그 개수도 나타냄.
 							</Card.Text>
 						</Card.Body>
 					</Card>
+					<br/>
+					<ButtonToolbar className='exForm__buttonToolBar'>
+						<Button variant='secondary' onClick={this.openPopup}>
+							피자 적당 조각 갯수 세기
+						</Button>
+					</ButtonToolbar>
 					<br />
 					<div className='exForm'>
 						<Form>

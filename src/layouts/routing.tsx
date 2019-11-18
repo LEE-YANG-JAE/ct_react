@@ -12,7 +12,7 @@ import Chapter2_4 from '../chapter2/Chapter2_4';
 import Chapter2_5 from '../chapter2/Chapter2_5';
 import Chapter2_6 from '../chapter2/Chapter2_6';
 import Chapter3_1 from '../chapter3/Chapter3_1';
-import Chapter3_2 from '../chapter3/Chapter3_2y';
+import Chapter3_2 from '../chapter3/Chapter3_2';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [

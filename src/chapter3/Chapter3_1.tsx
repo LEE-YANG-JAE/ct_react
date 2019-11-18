@@ -129,6 +129,7 @@ export default class Chapter3_1 extends React.Component {
 									<option value='meter'>Meter</option>
 								</Form.Control>
 							</Form.Group>
+							<br /><br />
 							<Form.Group as={Row}>
 								<Form.Label column sm='4'>
 									{this.state.chooseType === 'feet' ? (
