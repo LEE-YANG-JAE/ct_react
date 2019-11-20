@@ -64,6 +64,9 @@ class NavbarCompnent extends React.Component {
 								<LinkContainer to='/chapter3/excercise2'>
 									<NavDropdown.Item>피자 파티</NavDropdown.Item>
 								</LinkContainer>
+								<LinkContainer to='/chapter3/excercise3'>
+									<NavDropdown.Item>페인트 계산기</NavDropdown.Item>
+								</LinkContainer>
 							</NavDropdown>
 						</Nav>
 						<Form inline>

@@ -31,14 +31,14 @@ export default class PizzaCheckPopup extends React.Component<Props> {
 		}
 	};
 
-	makeResult() {
+	makeResult = () =>{
 		const peopleCnt = parseInt(this.state.people);
 		const pieceCnt = parseInt(this.state.piece);
 		const pizzaCnt = peopleCnt * pieceCnt / 8;
 		this.props.functionTest(pizzaCnt);
 	}
 
-	unLoad () {
+	unLoad = () => {
 		this.props.popupShow();
 	}
 	/** View **/
@@ -69,7 +69,7 @@ export default class PizzaCheckPopup extends React.Component<Props> {
 							<Form.Group as={Row}>
 								<Form.Label column sm='4'>
 									<div>
-										How many <strong>pizzas</strong> do they want?
+										How many <strong>pieces of a pizza</strong> do they want?
 									</div>
 								</Form.Label>
 								<Col sm='8'>

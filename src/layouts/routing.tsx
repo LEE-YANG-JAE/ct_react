@@ -13,6 +13,7 @@ import Chapter2_5 from '../chapter2/Chapter2_5';
 import Chapter2_6 from '../chapter2/Chapter2_6';
 import Chapter3_1 from '../chapter3/Chapter3_1';
 import Chapter3_2 from '../chapter3/Chapter3_2';
+import Chapter3_3 from '../chapter3/Chapter3_3';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -55,6 +56,10 @@ const routes = [
 	{
 		path: '/chapter3/excercise2',
 		component: Chapter3_2
+	},
+	{
+		path: '/chapter3/excercise3',
+		component: Chapter3_3
 	},
 	
 ];
