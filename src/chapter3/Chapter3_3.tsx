@@ -1,15 +1,16 @@
 import React from 'react';
 import { Card, Form, Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
 import Util from '../utils/util';
+import AlertComponent from '../components/alerts/AlertComponent';
 
 export default class Chapter3_3 extends React.Component {
 	/** 클래스내 전역 변수 영역 **/
 	private util: Util = new Util();
-
+	private alert: any;
 	/** 생성자 **/
 	constructor(props: any) {
 		super(props);
-		console.log(props);
+		this.alert = React.createRef();
 	}
 
 	/** 상태 영역 **/
@@ -36,12 +37,22 @@ export default class Chapter3_3 extends React.Component {
 
 	// 내용 입력 후 결과
 	makeResult = () => {
+		let nullYes: boolean = true;
+		nullYes = this.util.notNullCheck(this.state.width);
+		if (!nullYes) {
+			this.alert.current.alertMessage('warning', 'width 를 입력해야 합니다.');
+			return;
+		}
+		nullYes = this.util.notNullCheck(this.state.height);
+		if (!nullYes) {
+			this.alert.current.alertMessage('warning', 'height 를 입력해야 합니다.');
+			return;
+		}
 		const width: number = parseInt(this.state.width);
 		const height: number = parseInt(this.state.height);
 		const liters: number = Math.round(width * height / 9);
 		const litersAvg: number = (width * height) % 9;
 		let finalLiter: number;
-		console.log(liters, litersAvg);
 		if (litersAvg === 0) {
 			finalLiter = liters;
 		} else if (liters >= litersAvg) {
@@ -70,6 +81,7 @@ export default class Chapter3_3 extends React.Component {
 	render() {
 		return (
 			<div>
+				<AlertComponent ref={this.alert} />
 				<div className='container'>
 					<br />
 					<Card>
