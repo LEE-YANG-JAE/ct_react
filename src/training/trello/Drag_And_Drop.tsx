@@ -2,13 +2,13 @@ import React from 'react';
 import Nosy from '../../css/images/dragAndDrop/Nosy.jpeg';
 import Oreo from '../../css/images/dragAndDrop/Oreo.jpeg';
 import Sadeyes from '../../css/images/dragAndDrop/Sadeyes.jpeg';
+import '../../css/trello_basic/drag_and_drop.css';
 
 /** https://medium.com/javascript-in-plain-english/implementing-drag-and-drop-on-a-web-page-7d34e211c8b */
 export default class Drag_And_Drop extends React.Component {
 	/** 클래스내 전역 변수 영역 **/
 	private targetId: any = '';
 	private option: object = { height: '25px', width: '300px' };
-
 	/** 상태 영역 **/
 	state = {
 		dogs: ''
@@ -25,17 +25,45 @@ export default class Drag_And_Drop extends React.Component {
 	};
 	dropIt = (e: any) => {
 		e.preventDefault();
+		const div2: any = document.getElementById("div2");
+		if(div2.contains(document.getElementById(this.targetId))){
+			return;
+		}
 		e.target.appendChild(document.getElementById(this.targetId));
 
 		// Append to the text input
-		this.setState({ dogs: this.state.dogs + ' ' + this.targetId });
+		if (this.state.dogs.length === 0) {
+			this.setState({ dogs: this.targetId });
+		} else {
+			this.setState({ dogs: this.state.dogs + ', ' + this.targetId });
+		}
 	};
 	dropIt2 = (e: any) => {
 		e.preventDefault();
+		const div1: any = document.getElementById("div1");
+		if(div1.contains(document.getElementById(this.targetId))){
+			return;
+		}
 		e.target.appendChild(document.getElementById(this.targetId));
 
 		// Remove from the text input
-		this.setState({ dogs: this.state.dogs.replace(this.targetId, '') });
+		const array: string[] = this.state.dogs.split(', ');
+		if(!array.includes(this.targetId)){
+			return;
+		}
+		const index: number = array.indexOf(this.targetId);
+		if (index > -1) {
+			array.splice(index, 1);
+		}
+		let stringArray: string = '';
+		for (let value of array) {
+			if (stringArray === '') {
+				stringArray += value;
+			} else {
+				stringArray += ', ' + value;
+			}
+		}
+		this.setState({ dogs: stringArray });
 	};
 	allowDrop = (e: any) => {
 		e.preventDefault();
@@ -44,9 +72,12 @@ export default class Drag_And_Drop extends React.Component {
 	/** View **/
 	render() {
 		return (
-			<div>
+			<div className='body'>
+				<h2>My Favorite Dogs</h2>
+				<br />
+				<h1>Choose your favorite dogs in order of preference:</h1>
+				<br />
 				<div id='div1' onDrop={this.dropIt2} onDragOver={this.allowDrop}>
-					asfdsfd
 					<img
 						id='Nosy'
 						src={Nosy}
@@ -77,13 +108,17 @@ export default class Drag_And_Drop extends React.Component {
 				</div>
 				<br />Drag Up or Down
 				<br />
-				<div id='div2' onDrop={this.dropIt} onDragOver={this.allowDrop}>
-					asdfasdfadsf
-				</div>
+				<div id='div2' onDrop={this.dropIt} onDragOver={this.allowDrop} />
 				<br />
-				<br />
-				My Choices:
-				<input type='text' value={this.state.dogs} onChange={this.inputChange} style={this.option} />
+				My Choices: 
+				<input
+					type='text'
+					name='dogs'
+					value={this.state.dogs}
+					onChange={this.inputChange}
+					style={this.option}
+					disabled
+				/>
 			</div>
 		);
 	}

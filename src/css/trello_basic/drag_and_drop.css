@@ -1,0 +1,26 @@
+#div1 {
+	width: 390px;
+	height: 125px;
+	padding: 10px;
+	border: 1px solid #aaaaaa;
+	background: lightyellow;
+}
+
+#div2 {
+	width: 390px;
+	height: 125px;
+	padding: 10px;
+	border: 1px solid #aaaaaa;
+	background: crimson;
+}
+
+.body {
+	background: lightgray;
+    margin: 50px;
+    padding: 50px;
+}
+
+h2 {
+	font-size: 60px;
+	color: red;
+}
