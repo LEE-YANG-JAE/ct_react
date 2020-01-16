@@ -75,6 +75,9 @@ class NavbarCompnent extends React.Component {
 								<LinkContainer to='/drag_and_drop'>
 									<NavDropdown.Item>마우스 드래그 앤 드롭</NavDropdown.Item>
 								</LinkContainer>
+								<LinkContainer to='/card_arrange'>
+									<NavDropdown.Item>카드 드래그 앤 드롭</NavDropdown.Item>
+								</LinkContainer>
 							</NavDropdown>
 						</Nav>
 						<Form inline>
