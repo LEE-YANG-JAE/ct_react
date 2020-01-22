@@ -7,7 +7,8 @@
 	grid-template-rows: max-content auto;
 	grid-gap: 10px;
 	padding: 10px;
-	height: 800px;
+	min-height: 100vh;
+	height: auto;
 }
 .list-layout {
 	display: grid;

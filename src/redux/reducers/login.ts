@@ -11,8 +11,8 @@ function loginReducer(state = initialState, action: any) {
 	if (action.type === LOGIN_STATUS_CHANGE) {
 		return Object.assign({}, state, {
 			loginInfo: {
-				logined: (state.loginInfo.logined = action.payload.logined),
-				sessionInfo: (state.loginInfo.sessionInfo = action.payload.sessionInfo)
+				logined: action.payload.logined,
+				sessionInfo: action.payload.sessionInfo
 			}
 		});
 	} else if (action.type === LOGOUT) {
