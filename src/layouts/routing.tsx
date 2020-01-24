@@ -18,7 +18,7 @@ import Trello_Basic from '../training/trello/Trello_Basic';
 import Drag_And_Drop from '../training/trello/Drag_And_Drop';
 import Card_Arrange from '../training/trello/Card_Arrange';
 import To_Do_App from '../training/trello/To_Do_App';
-import Trello_Try from '../training/trello/Trello_Try';
+import Simple_Trello from '../training/trello/Simple_Trello';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -47,8 +47,8 @@ const routes = [
 		component: To_Do_App
 	},
 	{
-		path: '/trello_try',
-		component: Trello_Try
+		path: '/simple_trello',
+		component: Simple_Trello
 	},
 	{
 		path: '/chapter2/excercise1',

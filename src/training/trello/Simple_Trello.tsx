@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import TrelloRouting from '../../components/trello/Trello_Routing';
+import SimpleTrelloMain from '../../components/simple_trello/Simple_Trello_Main'
 
-export default class Trello_Try extends React.Component {
+export default class Simple_Trello extends React.Component {
 	render() {
 		return (
 			<div>
 				<Router>
-					<TrelloRouting />
+					<SimpleTrelloMain/>
 				</Router>
 			</div>
 		);
