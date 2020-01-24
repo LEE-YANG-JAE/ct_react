@@ -47,20 +47,18 @@ class CardContainer extends Component<Props> {
 	}
 }
 
-const validate = (values: any, props: any) => {
-    const errors: any = {};
-    const { listId } = props;
-    let cardName = `cardName_${listId}`
+const validate = (values: any, props?: any) => {
+    const errors:any = {};
 
-    if (!values[cardName]) {
-        errors[cardName] = 'oops, give me name';
+    if (!values.cardName) {
+        errors.cardName = 'oops!';
     }
 
     return errors;
 }
 
 const afterSubmit = (result: any, dispatch: any) => {
-    dispatch(reset('card'));
+    dispatch(reset('cardName'));
 }
 
 function mapStateToProps({ activeBoardData }: any) {
@@ -69,6 +67,6 @@ function mapStateToProps({ activeBoardData }: any) {
 
 export default reduxForm({
     validate,
-    form: 'card',
+    form: 'cardName',
     onSubmitSuccess: afterSubmit,
 })(connect(mapStateToProps, { submitNewCard })(CardContainer));

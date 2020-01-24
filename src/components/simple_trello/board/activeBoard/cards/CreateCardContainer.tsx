@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import BoardTitleInput from '../../boardCreation/BoardTitleInput';
 import Card from './Card';
 import uniqueId from 'lodash/uniqueId';
-import { submitNewCard, archiveCard } from '../../../../../redux/actions';
+import { submitNewCard, archiveCard } from '../../../../../redux/actions/index';
 
 type Props = {
 	activeBoardData: any;
