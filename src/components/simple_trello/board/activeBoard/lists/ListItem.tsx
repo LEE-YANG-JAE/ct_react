@@ -4,6 +4,8 @@ import CreateCardContainer from '../cards/CardContainer';
 import { connect } from 'react-redux';
 import { fadeIn } from '../../../../../utils/animations';
 import { handleDrop } from '../../../../../redux/actions/index';
+import { DropTarget } from 'react-dnd';
+import { ItemTypes } from '../../../../../utils/constants';
 
 const ListItemWrapper = styled.div`
 	display: inline-block;
@@ -24,6 +26,27 @@ const ListItemHeader = styled.h4`
 	font-weight: 900;
 `;
 
+const dropSource = {
+	drop(props: any, monitor: any) {
+		const card = monitor.getItem(); // this item is being dragged
+		props.handleDrop(card.title, card.cardId, card.listId, props.id);
+		// const droppedItem = props.onDrop(monitor.getItem());
+	}
+};
+
+function collect(connect: any, monitor: any) {
+	return {
+		// Call this function inside render()
+		// to let React DnD handle the drag events:
+		connectDropTarget: connect.dropTarget(),
+		// You can ask the monitor about the current drag state:
+		isOver: monitor.isOver(),
+		isOverCurrent: monitor.isOver({ shallow: true }),
+		canDrop: monitor.canDrop(),
+		itemType: monitor.getItemType()
+	};
+}
+
 type Props = {
 	id: any;
 	name: any;
@@ -36,11 +59,11 @@ class ListItem extends Component<Props> {
 				<ListItemWrapper>
 					<ListItemHeader>{name}</ListItemHeader>
 					<hr />
-					<CreateCardContainer listId={id} />
+					<CreateCardContainer listId={id}/>
 				</ListItemWrapper>
 			</div>
 		);
 	}
 }
 
-export default connect(null, { handleDrop })(ListItem);
+export default (connect(null, { handleDrop })(DropTarget(ItemTypes.CARD, dropSource, collect)(ListItem)));

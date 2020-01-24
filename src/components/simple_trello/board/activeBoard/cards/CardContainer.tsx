@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { connect } from 'react-redux';
 import { submitNewCard } from '../../../../../redux/actions/index';
 import BoardTitleInput from '../../boardCreation/BoardTitleInput';
@@ -7,9 +7,10 @@ import Card from './Card';
 import uniqueId from 'lodash/uniqueId';
 
 type Props = {
-	listId: any;
+	handleSubmit?: any;
+	listId?: any;
 };
-class CreateCardContainer extends Component<Props> {
+class CardContainer extends Component<Props> {
 	submit = (values: any) => {
 		const { listId, submitNewCard }: any = this.props;
 		let cardName = `cardName_${listId}`;
@@ -32,7 +33,7 @@ class CreateCardContainer extends Component<Props> {
 	};
 
 	render() {
-		const { handleSubmit, listId }: any = this.props;
+		const { handleSubmit, listId } = this.props;
 		return (
 			<div>
 				<form onSubmit={handleSubmit(this.submit)}>
@@ -46,8 +47,28 @@ class CreateCardContainer extends Component<Props> {
 	}
 }
 
+const validate = (values: any, props: any) => {
+    const errors: any = {};
+    const { listId } = props;
+    let cardName = `cardName_${listId}`
+
+    if (!values[cardName]) {
+        errors[cardName] = 'oops, give me name';
+    }
+
+    return errors;
+}
+
+const afterSubmit = (result: any, dispatch: any) => {
+    dispatch(reset('card'));
+}
+
 function mapStateToProps({ activeBoardData }: any) {
 	return { activeBoardData };
 }
 
-export default (connect(mapStateToProps, { submitNewCard })(CreateCardContainer));
+export default reduxForm({
+    validate,
+    form: 'card',
+    onSubmitSuccess: afterSubmit,
+})(connect(mapStateToProps, { submitNewCard })(CardContainer));

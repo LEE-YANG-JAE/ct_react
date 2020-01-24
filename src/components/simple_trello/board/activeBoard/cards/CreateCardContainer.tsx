@@ -8,6 +8,9 @@ import uniqueId from 'lodash/uniqueId';
 import { submitNewCard, archiveCard } from '../../../../../redux/actions';
 
 type Props = {
+	activeBoardData: any;
+	handleSubmit: any;
+	listId: any;
 	submitNewCard: any;
 };
 
@@ -19,8 +22,7 @@ class CreateCardContainer extends Component<Props> {
 	};
 
 	renderCards = () => {
-		const { activeBoardData, listId, archiveCard }: any = this.props;
-		archiveCard();
+		const { activeBoardData, listId }: any = this.props;
 		return activeBoardData.listItems[listId].cards.map((card: any, i: any) => {
 			return <Card key={i} title={card.name} listId={card.listId} />;
 		});

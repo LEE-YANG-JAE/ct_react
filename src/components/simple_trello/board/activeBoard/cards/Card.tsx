@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { archiveCard } from '../../../../../redux/actions/index';
 import { fadeIn } from '../../../../../utils/animations';
+import { DragSource } from 'react-dnd';
+import { ItemTypes } from '../../../../../utils/constants';
 
 const CardWrapper = styled.div`
 	margin: 10px 0;
@@ -30,6 +32,22 @@ const ArchiveTask = styled.div`
 	font-size: 16px;
 `;
 
+const cardSource = {
+    beginDrag({ title, cardId, listId }: any) {
+        return {
+            title, cardId, listId
+        }
+    }
+}
+
+
+function collect(connect: any, monitor: any) {
+	return {
+		connectDragSource: connect.dragSource(),
+		connectDragPreview: connect.dragPreview(),
+		isDragging: monitor.isDragging(),
+	}
+}
 
 type Props = {
 	archiveCard?: any;
@@ -73,4 +91,4 @@ const mapStateToProps = ({ activeBoardData }: any) => {
 	};
 };
 
-export default connect(mapStateToProps, { archiveCard })(Card);
+export default (connect(mapStateToProps, { archiveCard })(DragSource(ItemTypes.CARD, cardSource, collect)(Card)));
