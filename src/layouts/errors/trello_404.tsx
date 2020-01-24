@@ -12,11 +12,11 @@ const Text = styled.h1`
     color: #333;
 `;
 
-const NotFound = () => (
+const Trello_NotFound = () => (
     <Wrapper>
         <Text>Woops!</Text>
-        <Link to="/login">Head back to safety!</Link>
+        <Link to="/simple_trello">Head back to safety!</Link>
     </Wrapper>
 )
 
-export default NotFound;
+export default Trello_NotFound;

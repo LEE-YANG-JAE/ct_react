@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import createNewBoard from '../../../../redux/actions/simple_trello/CreateNewBoard';
+import { createNewBoard } from '../../../../redux/actions/simple_trello/BoardActions';
 
 export const Wrapper = styled.div`
 	width: 345px;

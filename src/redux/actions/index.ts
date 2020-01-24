@@ -1,7 +1,18 @@
 import addArticle from './article';
 import { loginStatusChange, logout } from './loginCheck';
-import createNewBoard from './simple_trello/CreateNewBoard';
-import submitNewBoard from './simple_trello/SubmitNewBoard';
-import cancelCreatingBoard from './simple_trello/CancelCreatingBoard';
+import { createNewBoard, cancelCreatingBoard, submitNewBoard } from './simple_trello/BoardActions';
+import { archiveCard, handleDrop, submitNewCard, submitList, enableListEditMode } from './simple_trello/CardActions';
 
-export { addArticle, loginStatusChange, logout, createNewBoard, submitNewBoard, cancelCreatingBoard };
+export {
+	addArticle,
+	loginStatusChange,
+	logout,
+	createNewBoard,
+	submitNewBoard,
+	cancelCreatingBoard,
+	archiveCard,
+	handleDrop,
+	submitNewCard,
+	submitList,
+	enableListEditMode
+};

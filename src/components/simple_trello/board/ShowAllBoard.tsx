@@ -36,7 +36,7 @@ const BoardWrapper = styled.div`
 `
 
 const ShowAllBoards = ({ title, id }: any) => (
-    <Link to={`/b/${id}`}>
+    <Link to={`/simple_trello/${id}`}>
         <BoardWrapper>
             <Title>{title}</Title>
         </BoardWrapper>

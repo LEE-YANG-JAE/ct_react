@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Wrapper } from './CreateBoard';
-import cancelCreatingBoard from '../../../../redux/actions/simple_trello/CancelCreatingBoard';
-import submitNewBoard from '../../../../redux/actions/simple_trello/SubmitNewBoard';
+import { cancelCreatingBoard, submitNewBoard } from '../../../../redux/actions/simple_trello/BoardActions';
 import BoardTitleForm from './BoardTitleForm';
 import { store } from '../../../../redux/store';
 import { STORE_NEW_BOARD_TO_COLLECTION } from '../../../../redux/constants/simple_trello/ActionTypes';
@@ -51,8 +50,6 @@ type Props = {
 class ActiveCreateBoard extends Component<Props> {
 	submit = (values: any) => {
 		this.props.submitNewBoard(values.boardTitle);
-		values.boardTitle = '';
-		
 		const store_newBoard: any = store.getState().newBoard;
 		const newBoard: object = {
 			id: store_newBoard.id,
