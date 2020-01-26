@@ -25,7 +25,7 @@ class ShowActiveBoard extends Component<Props> {
 		const { match }: any = this.props;
 		const boardsCollection = store.getState().boardsCollection;
 		const activeBoardData = store.getState().activeBoardData;
-		localStorage.setItem('activeBoardData', JSON.stringify(activeBoardData));
+
 		const activeBoard = find(boardsCollection, (board: any) => board.id === match.params.id);
 		const paramData = {
 			boardsCollection,
@@ -38,13 +38,13 @@ class ShowActiveBoard extends Component<Props> {
 		const serializedBoardCollectionState: any= JSON.parse(localStorage.getItem('boardsCollection') as any);
 		if(serializedBoardCollectionState){
 			store.getState().boardsCollection = serializedBoardCollectionState;
-			console.log("boardsCollection:", boardsCollection);
 		}
 		
 		store.dispatch({ type: SELECT_ACTIVE_BOARD_SUCCESS });
 	}
 
 	getTitle = () => {
+		console.log(this.props.activeBoard.id)
 		return this.props.activeBoard.title;
 	};
 
@@ -64,7 +64,7 @@ class ShowActiveBoard extends Component<Props> {
 			<div>
 				<ActiveBoardTitle>{this.getTitle()}</ActiveBoardTitle>
 				<ListWrapper>
-					<ListItemsContainer />
+					<ListItemsContainer pid={this.props.activeBoard.id} />
 					{activeBoard.isEditingList ? (
 						<ListEditingMode onSubmit={this.handleListSubmit} />
 					) : (

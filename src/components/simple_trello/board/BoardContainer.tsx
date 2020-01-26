@@ -13,12 +13,13 @@ const Wrapper = styled.div`
 `;
 
 type Props = {
-	boardsCollection?: any;
+	boardsCollection: any;
 };
 
 class BoardContainer extends React.Component<Props> {
 	renderAllBoards = () => {
 		const { boardsCollection } = this.props;
+		
 		return boardsCollection.map((board: any) => {
 			return (
 				<ShowAllBoards

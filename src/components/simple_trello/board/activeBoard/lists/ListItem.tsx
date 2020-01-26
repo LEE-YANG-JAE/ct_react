@@ -50,6 +50,7 @@ function collect(connect: any, monitor: any) {
 type Props = {
 	id: any;
 	name: any;
+	connectDropTarget: any;
 };
 class ListItem extends Component<Props> {
 	render() {

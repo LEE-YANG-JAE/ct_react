@@ -6,10 +6,28 @@ import ListItem from './ListItem';
 
 const ListItemsWrapper = styled.div`display: flex;`;
 
-class ListItemsContainer extends Component {
+type Props = {
+	activeBoardData: any;
+	pid: any;
+}
+class ListItemsContainer extends Component<Props> {
 	renderListItems = () => {
-		const { activeBoardData }: any = this.props;
-
+		const { activeBoardData, boardsCollection, pid}: any = this.props;
+		console.log(activeBoardData, boardsCollection, pid);
+		
+		if(Object.entries(activeBoardData.listItems).length === 0) {
+			boardsCollection.map( (board : any) => {
+				if (board.id === pid) {
+					if(board.data !== undefined && board.data !== null){
+						if(Object.entries(board.data).length !== 0){
+							activeBoardData.listItems = board.data;
+							return true;
+						}
+					}
+				}
+				return false
+			});
+		}
 		const mappedList = mapValues(activeBoardData.listItems, (list) => list.name);
 		const mappedKeys = Object.keys(mappedList);
 
@@ -27,8 +45,8 @@ class ListItemsContainer extends Component {
 	}
 }
 
-function mapStateToProps({ activeBoardData }: any) {
-	return { activeBoardData };
+function mapStateToProps({ activeBoardData, boardsCollection }: any) {
+	return { activeBoardData, boardsCollection };
 }
 
 export default connect(mapStateToProps)(ListItemsContainer);

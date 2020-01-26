@@ -26,14 +26,14 @@ const ListReducer = (state: any = {}, action: any) => {
 				}
 				return false;
 			});
-			if(valueData.length !== 0 ) {
+			if(Object.entries(valueData).length !== 0) {
 				boardsCollection.map( (board : any) => {
 					if (board.id === pid) {
 						board.data = valueData;
 						return true;
 					}
 					return false
-				})
+				});
 				localStorage.setItem('boardsCollection', JSON.stringify(boardsCollection));
 			}
 			
