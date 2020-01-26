@@ -4,7 +4,8 @@ import {
 	ARCHIVE_POST,
 	SUBMIT_LIST,
 	LIST_EDIT_MODE_ENABLED,
-	STOP_EDITING_LIST
+	STOP_EDITING_LIST,
+	SELECT_ACTIVE_BOARD
 } from '../../constants/simple_trello/ActionTypes';
 
 export function archiveCard(cardId: any, listId: any) {
@@ -29,4 +30,8 @@ export function enableListEditMode() {
 
 export function disableListEditMode() {
 	return { type: STOP_EDITING_LIST, payload: false };
+}
+
+export function selectActiveBoard(activeBoard: any) {
+	return { type: SELECT_ACTIVE_BOARD, payload: activeBoard };
 }

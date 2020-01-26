@@ -9,7 +9,8 @@ import { find } from 'lodash';
 import { store } from '../../../../redux/store';
 import {
 	SELECT_ACTIVE_BOARD_SUCCESS,
-	SELECT_ACTIVE_BOARD
+	SELECT_ACTIVE_BOARD,
+	SELECT_ACTIVE_LIST
 } from '../../../../redux/constants/simple_trello/ActionTypes';
 import ActiveBoardTitle from './ActiveBoardTitle';
 
@@ -22,11 +23,24 @@ type Props = {
 class ShowActiveBoard extends Component<Props> {
 	componentDidMount() {
 		const { match }: any = this.props;
-
 		const boardsCollection = store.getState().boardsCollection;
+		const activeBoardData = store.getState().activeBoardData;
+		localStorage.setItem('activeBoardData', JSON.stringify(activeBoardData));
 		const activeBoard = find(boardsCollection, (board: any) => board.id === match.params.id);
-
+		const paramData = {
+			boardsCollection,
+			activeBoardData,
+			pid: match.params.id
+		};
 		store.dispatch({ type: SELECT_ACTIVE_BOARD, payload: activeBoard });
+		store.dispatch({ type: SELECT_ACTIVE_LIST, payload: paramData });
+
+		const serializedBoardCollectionState: any = JSON.parse(localStorage.getItem('boardsCollection') as any);
+		if (serializedBoardCollectionState) {
+			store.getState().boardsCollection = serializedBoardCollectionState;
+			console.log('boardsCollection: ', boardsCollection);
+		}
+
 		store.dispatch({ type: SELECT_ACTIVE_BOARD_SUCCESS });
 	}
 
@@ -35,7 +49,9 @@ class ShowActiveBoard extends Component<Props> {
 	};
 
 	handleListSubmit = (values: any) => {
-		this.props.submitList(values.listItem);
+		const { match }: any = this.props;
+		values.pid = match.params.id;
+		store.dispatch(submitList(values));
 	};
 
 	render() {
