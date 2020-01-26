@@ -2,51 +2,27 @@ import { combineReducers } from 'redux';
 import uniqueId from 'lodash/uniqueId';
 
 import {
+	SELECT_ACTIVE_BOARD,
 	SUBMIT_LIST,
 	SUBMIT_NEW_CARD,
 	HANDLE_DROP,
-	ARCHIVE_POST,
-	SELECT_ACTIVE_LIST
+	ARCHIVE_POST
 } from '../../constants/simple_trello/ActionTypes';
 
 const ListReducer = (state: any = {}, action: any) => {
 	const listId = uniqueId('list_');
 
 	switch (action.type) {
-		case SELECT_ACTIVE_LIST:
-			const pid = action.payload.pid;
-			const activeBoardData = action.payload.activeBoardData;
-			const boardsCollection = action.payload.boardsCollection;
-			
-			const valueData:any = {};
-			Object.keys(activeBoardData.listItems).map((key: any) => {
-				if (activeBoardData.listItems[key].pid === pid) {
-					valueData[key] = activeBoardData.listItems[key];
-					return true;
-				}
-				return false;
-			});
-			if(valueData.length !== 0 ) {
-				boardsCollection.map( (board : any) => {
-					if (board.id === pid) {
-						board.data = valueData;
-						return true;
-					}
-					return false
-				})
-				localStorage.setItem('boardsCollection', JSON.stringify(boardsCollection));
-			}
-			
-			return valueData || [];
+		case SELECT_ACTIVE_BOARD:
+			return action.payload.data || [];
 
 		case SUBMIT_LIST:
 			return {
 				...state,
 				[listId]: {
 					// the unique ID of the list
-					name: action.payload.listItem, // name of the list
+					name: action.payload, // name of the list
 					id: listId, // list ID
-					pid: action.payload.pid,
 					cards: [] // card IDs go inside here
 				}
 			};

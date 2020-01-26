@@ -34,13 +34,13 @@ class ShowActiveBoard extends Component<Props> {
 		};
 		store.dispatch({ type: SELECT_ACTIVE_BOARD, payload: activeBoard });
 		store.dispatch({ type: SELECT_ACTIVE_LIST, payload: paramData });
-
-		const serializedBoardCollectionState: any = JSON.parse(localStorage.getItem('boardsCollection') as any);
-		if (serializedBoardCollectionState) {
+		
+		const serializedBoardCollectionState: any= JSON.parse(localStorage.getItem('boardsCollection') as any);
+		if(serializedBoardCollectionState){
 			store.getState().boardsCollection = serializedBoardCollectionState;
-			console.log('boardsCollection: ', boardsCollection);
+			console.log("boardsCollection:", boardsCollection);
 		}
-
+		
 		store.dispatch({ type: SELECT_ACTIVE_BOARD_SUCCESS });
 	}
 
