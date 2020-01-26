@@ -34,7 +34,6 @@ const ListReducer = (state: any = {}, action: any) => {
 					}
 					return false;
 				});
-				localStorage.setItem('boardsCollection', JSON.stringify(boardsCollection));
 			}
 			
 			return valueData || [];
