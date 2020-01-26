@@ -25,7 +25,7 @@ class ListItemsContainer extends Component<Props> {
 						}
 					}
 				}
-				return false
+				return false;
 			});
 		}
 		const mappedList = mapValues(activeBoardData.listItems, (list) => list.name);

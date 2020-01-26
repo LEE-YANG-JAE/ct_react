@@ -32,7 +32,7 @@ const ListReducer = (state: any = {}, action: any) => {
 						board.data = valueData;
 						return true;
 					}
-					return false
+					return false;
 				});
 				localStorage.setItem('boardsCollection', JSON.stringify(boardsCollection));
 			}
