@@ -82,7 +82,10 @@ class NavbarCompnent extends React.Component {
 									<NavDropdown.Item>To-Do 기초</NavDropdown.Item>
 								</LinkContainer>
 								<LinkContainer to='/simple_trello'>
-									<NavDropdown.Item>트렐로 시도</NavDropdown.Item>
+									<NavDropdown.Item>트렐로 클론</NavDropdown.Item>
+								</LinkContainer>
+								<LinkContainer to='/simple_tetris'>
+									<NavDropdown.Item>테트리스 만들기</NavDropdown.Item>
 								</LinkContainer>
 							</NavDropdown>
 						</Nav>

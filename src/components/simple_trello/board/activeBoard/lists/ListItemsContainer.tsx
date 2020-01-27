@@ -7,7 +7,6 @@ import ListItem from './ListItem';
 const ListItemsWrapper = styled.div`display: flex;`;
 
 type Props = {
-	activeBoardData: any;
 	pid: any;
 }
 class ListItemsContainer extends Component<Props> {

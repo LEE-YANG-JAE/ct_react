@@ -33,7 +33,7 @@ class ShowActiveBoard extends Component<Props> {
 			pid: match.params.id
 		};
 		store.dispatch({ type: SELECT_ACTIVE_BOARD, payload: activeBoard });
-		store.dispatch({ type: SELECT_ACTIVE_LIST, payload: paramData });		
+		store.dispatch({ type: SELECT_ACTIVE_LIST, payload: paramData });
 		store.dispatch({ type: SELECT_ACTIVE_BOARD_SUCCESS });
 	}
 
