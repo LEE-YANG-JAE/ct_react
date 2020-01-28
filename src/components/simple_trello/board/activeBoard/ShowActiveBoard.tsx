@@ -48,7 +48,7 @@ class ShowActiveBoard extends Component<Props> {
 	};
 
 	render() {
-		const { activeBoard, enableListEditMode }: any = this.props;
+		const { activeBoard, enableListEditMode, match }: any = this.props;
 		if (activeBoard.isFetching) {
 			return <div>loading...</div>;
 		}
@@ -57,7 +57,7 @@ class ShowActiveBoard extends Component<Props> {
 			<div>
 				<ActiveBoardTitle>{this.getTitle()}</ActiveBoardTitle>
 				<ListWrapper>
-					<ListItemsContainer pid={this.props.activeBoard.id} />
+					<ListItemsContainer pid={match.params.id} />
 					{activeBoard.isEditingList ? (
 						<ListEditingMode onSubmit={this.handleListSubmit} />
 					) : (

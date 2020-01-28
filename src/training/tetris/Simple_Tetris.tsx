@@ -3,7 +3,7 @@ import React from 'react';
 import '../../css/pages/tetris.css';
 import '../../css/fonts/press_start_2p_font.css';
 
-import { COLS, BLOCK_SIZE, ROWS, KEY, ROTATION, POINTS, LEVEL } from './libs/constants';
+import { COLS, BLOCK_SIZE, ROWS, KEY, POINTS, LEVEL } from './libs/constants';
 import { Board } from './libs/board';
 
 // https://medium.com/@michael.karen/learning-modern-javascript-with-tetris-92d532bcd057
@@ -14,14 +14,6 @@ export default class Simple_Tetris extends React.Component {
 	private ctx: any;
 	private ctxNext: any;
 	private requestId: any;
-	private moves = {
-		[KEY.LEFT]: (p: any) => ({ ...p, x: p.x - 1 }),
-		[KEY.RIGHT]: (p: any) => ({ ...p, x: p.x + 1 }),
-		[KEY.DOWN]: (p: any) => ({ ...p, y: p.y + 1 }),
-		[KEY.SPACE]: (p: any) => ({ ...p, y: p.y + 1 }),
-		[KEY.UP]: (p: any) => this.board.rotate(p, ROTATION.RIGHT),
-		[KEY.Q]: (p: any) => this.board.rotate(p, ROTATION.LEFT)
-	};
 
 	constructor(props: any) {
 		super(props);
@@ -61,16 +53,16 @@ export default class Simple_Tetris extends React.Component {
 			}
 			if (event.keyCode === KEY.ESC) {
 				this.gameOver();
-			} else if (this.moves[event.keyCode]) {
+			} else if (this.board.moves[event.keyCode]) {
 				event.preventDefault();
 				// Get new state
-				let p = this.moves[event.keyCode](this.board.piece);
+				let p = this.board.moves[event.keyCode](this.board.piece);
 				if (event.keyCode === KEY.SPACE) {
 					// Hard drop
 					while (this.board.valid(p)) {
 						this.board.account.score += POINTS.HARD_DROP;
 						this.board.piece.move(p);
-						p = this.moves[KEY.DOWN](this.board.piece);
+						p = this.board.moves[KEY.DOWN](this.board.piece);
 					}
 					this.board.piece.hardDrop();
 				} else if (this.board.valid(p)) {
