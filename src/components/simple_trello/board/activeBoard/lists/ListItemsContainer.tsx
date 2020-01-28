@@ -12,8 +12,7 @@ type Props = {
 class ListItemsContainer extends Component<Props> {
 	renderListItems = () => {
 		const { activeBoardData, boardsCollection, pid}: any = this.props;
-		console.log(activeBoardData, boardsCollection, pid);
-		
+
 		if(Object.entries(activeBoardData.listItems).length === 0) {
 			boardsCollection.map( (board : any) => {
 				if (board.id === pid) {

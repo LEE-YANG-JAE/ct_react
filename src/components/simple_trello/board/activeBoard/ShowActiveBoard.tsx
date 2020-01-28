@@ -23,16 +23,17 @@ type Props = {
 class ShowActiveBoard extends Component<Props> {
 	componentDidMount() {
 		const { match }: any = this.props;
-		const boardsCollection = store.getState().boardsCollection;
-		const activeBoardData = store.getState().activeBoardData;
+		let boardsCollection = store.getState().boardsCollection;
+		let activeBoardData = store.getState().activeBoardData;
 
 		const activeBoard = find(boardsCollection, (board: any) => board.id === match.params.id);
-		const paramData = {
+		store.dispatch({ type: SELECT_ACTIVE_BOARD, payload: activeBoard });
+		activeBoardData = store.getState().activeBoardData;
+		let paramData = {
 			boardsCollection,
 			activeBoardData,
 			pid: match.params.id
 		};
-		store.dispatch({ type: SELECT_ACTIVE_BOARD, payload: activeBoard });
 		store.dispatch({ type: SELECT_ACTIVE_LIST, payload: paramData });
 		store.dispatch({ type: SELECT_ACTIVE_BOARD_SUCCESS });
 	}
@@ -48,7 +49,7 @@ class ShowActiveBoard extends Component<Props> {
 	};
 
 	render() {
-		const { activeBoard, enableListEditMode, match }: any = this.props;
+		const { activeBoard, enableListEditMode }: any = this.props;
 		if (activeBoard.isFetching) {
 			return <div>loading...</div>;
 		}
@@ -57,7 +58,7 @@ class ShowActiveBoard extends Component<Props> {
 			<div>
 				<ActiveBoardTitle>{this.getTitle()}</ActiveBoardTitle>
 				<ListWrapper>
-					<ListItemsContainer pid={match.params.id} />
+					<ListItemsContainer pid={this.props.activeBoard.id} />
 					{activeBoard.isEditingList ? (
 						<ListEditingMode onSubmit={this.handleListSubmit} />
 					) : (
