@@ -20,6 +20,7 @@ import Card_Arrange from '../training/trello/Card_Arrange';
 import To_Do_App from '../training/trello/To_Do_App';
 import Simple_Trello from '../training/trello/Simple_Trello';
 import Simple_Tetris from '../training/tetris/Simple_Tetris';
+import GridTest from '../sysmgmt/GridTest';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -90,6 +91,10 @@ const routes = [
 	{
 		path: '/chapter3/excercise3',
 		component: Chapter3_3
+	},
+	{
+		path: '/sysmgmt/gridTest',
+		component: GridTest
 	},
 	
 ];

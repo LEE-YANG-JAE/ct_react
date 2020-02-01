@@ -3,6 +3,7 @@ import { store, persistor } from './redux/store';
 import Framework from './layouts/Framework';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+const { Fancy } = require('fancygrid-react');
 
 class App extends React.Component {
 	constructor(props: any) {
@@ -10,6 +11,7 @@ class App extends React.Component {
 		this.state = {
 			shown: false
 		};
+		Fancy.getModulesList();
 	}
 	render() {
 		return (

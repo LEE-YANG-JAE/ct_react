@@ -88,6 +88,11 @@ class NavbarCompnent extends React.Component {
 									<NavDropdown.Item>테트리스 만들기</NavDropdown.Item>
 								</LinkContainer>
 							</NavDropdown>
+							<NavDropdown title='시스템 관리' id='basic-nav-dropdown'>
+								<LinkContainer to='/sysmgmt/gridTest'>
+									<NavDropdown.Item>Fancy Grid Test</NavDropdown.Item>
+								</LinkContainer>
+							</NavDropdown>
 						</Nav>
 						<Form inline>
 							<LinkContainer to='/login' style={{ display: this.state.display }}>
