@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import Util from '../utils/util';
 import ModalAlert from '../components/modals/ModalAlert';
 import { loginStatusChange } from '../redux/actions';
-import {store } from '../redux/store';
+import { store } from '../redux/store';
+import axios from 'axios';
 
 // https://stackoverflow.com/questions/48219432/react-router-typescript-errors-on-withrouter-after-updating-version
 // https://dev.to/kozakrisz/react-router---how-to-pass-history-object-to-a-component-3l0j
@@ -16,7 +17,7 @@ type PathParamsType = {
 
 // Your component own properties
 type PropsType = RouteComponentProps<PathParamsType> & {
-	someString: string
+	someString: string;
 };
 
 class LoginComponent extends React.Component<PropsType> {
@@ -54,30 +55,31 @@ class LoginComponent extends React.Component<PropsType> {
 		if (this.util.notNullCheck(f.userId) === false || this.util.notNullCheck(f.password) === false) {
 			return;
 		}
-		const loginCheck: boolean = this.loginProcess(f);
-		if (loginCheck) {
-			const { history } = this.props;
-			if (history) {
-				const loginInfo: any = {
-					logined: true,
-					sessionInfo: 'yangjae'
-				};
-				store.dispatch(loginStatusChange(loginInfo));
-				window.updateTopMostParent(loginInfo); 
-				history.replace('/main');
-			}
-		} else {
-			this.modalAlert.current.handleShow('Login', 'Login Fail. Please check your information.');
-		}
+		this.loginProcess(f);
 	};
 
 	// 로그인 검증
-	loginProcess(f: any): boolean {
-		if (f.userId === '1' && f.password === '1') {
-			return true;
-		} else {
-			return false;
-		}
+	loginProcess(f: any) {
+		axios
+			.post('http://localhost:8080/Boot/api/login', { userId: this.state.userId, passNo: this.state.password })
+			.then((res) => {
+				const { history } = this.props;
+				if (history) {
+					const loginInfo: any = {
+						logined: true,
+						userId: res.data.userId,
+						locale: res.data.locale,
+						token: res.data.token
+					};
+					store.dispatch(loginStatusChange(loginInfo));
+					window.updateTopMostParent(loginInfo);
+					history.replace('/main');
+				}
+			})
+			.catch((err) => {
+				this.modalAlert.current.handleShow('Login', 'Login Fail. Please check your information.');
+				console.log(err);
+			});
 	}
 	render() {
 		const { userId, password, submited } = this.state;
@@ -96,9 +98,7 @@ class LoginComponent extends React.Component<PropsType> {
 							onChange={this.inputChange}
 						/>
 					</div>
-					{
-						submited && !userId && <span style={{ color: 'red' }}>Please input your ID</span>
-					}
+					{submited && !userId && <span style={{ color: 'red' }}>Please input your ID</span>}
 					<div className='login__txtb'>
 						<input
 							type='password'
@@ -108,9 +108,7 @@ class LoginComponent extends React.Component<PropsType> {
 							onChange={this.inputChange}
 						/>
 					</div>
-					{
-						submited && !password && <span style={{ color: 'red' }}>Please input your Password</span>
-					}
+					{submited && !password && <span style={{ color: 'red' }}>Please input your Password</span>}
 
 					<input type='button' className='login__btn' onClick={this.loginBtn} value='Login' />
 					<div className='login__bottomText'>

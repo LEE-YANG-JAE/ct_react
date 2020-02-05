@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const fs = require('fs'); // to check if the file exists
 
 const config = {
-	entry: ['react-hot-loader/patch', './src' ],
+	entry: [ 'react-hot-loader/patch', './src' ],
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: '[id].bundle.js',
@@ -44,10 +44,6 @@ const config = {
 				include: /\.module\.css$/
 			},
 			{
-				test: /\.svg$/,
-				use: 'file-loader'
-			},
-			{
 				test: /\.png$/,
 				use: [
 					{
@@ -55,6 +51,14 @@ const config = {
 						options: {
 							mimetype: 'image/png'
 						}
+					}
+				]
+			},
+			{
+				test: /\.(png|jpe?g|gif|svg)$/i,
+				use: [
+					{
+						loader: 'file-loader'
 					}
 				]
 			}
@@ -90,7 +94,7 @@ const config = {
 			template: 'public/index.html',
 			inject: true,
 			appMountId: 'root'
-    })
+		})
 	],
 	optimization: {
 		runtimeChunk: 'single',
@@ -108,32 +112,29 @@ const config = {
 
 module.exports = (env, argv) => {
 	if (argv.hot) {
-    // Cannot use 'contenthash' when hot reloading is enabled.
-    config.output.filename = '[name].[hash].js';
-  }
-  // const currentPath = path.join(__dirname);
-  // https://stackoverflow.com/questions/42956127/get-parent-directory-name-in-node-js/42956762
-  const currentPath = path.basename(path.dirname('/'));
-  // Create the fallback path (the production .env)
-  const basePath = currentPath + './.env';
-  // We're concatenating the environment name to our filename to specify the correct env file!
-  const envPath = basePath + '.' + env.ENVIRONMENT;
-  // Check if the file exists, otherwise fall back to the production .env
-  const finalPath = fs.existsSync(envPath) ? envPath : basePath;
-  // Set the path parameter in the dotenv config
-  const fileEnv = dotenv.config({ path: finalPath }).parsed;
-  
-  // reduce it to a nice object, the same as before (but with the variables from the file)
-  const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
-    return prev;
-  }, {});
+		// Cannot use 'contenthash' when hot reloading is enabled.
+		config.output.filename = '[name].[hash].js';
+	}
+	// const currentPath = path.join(__dirname);
+	// https://stackoverflow.com/questions/42956127/get-parent-directory-name-in-node-js/42956762
+	const currentPath = path.basename(path.dirname('/'));
+	// Create the fallback path (the production .env)
+	const basePath = currentPath + './.env';
+	// We're concatenating the environment name to our filename to specify the correct env file!
+	const envPath = basePath + '.' + env.ENVIRONMENT;
+	// Check if the file exists, otherwise fall back to the production .env
+	const finalPath = fs.existsSync(envPath) ? envPath : basePath;
+	// Set the path parameter in the dotenv config
+	const fileEnv = dotenv.config({ path: finalPath }).parsed;
+
+	// reduce it to a nice object, the same as before (but with the variables from the file)
+	const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
+		prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
+		return prev;
+	}, {});
 
 	return {
-    ...config,
-    plugins: [
-      ...config.plugins,
-      new webpack.DefinePlugin(envKeys)
-    ]
-  };
+		...config,
+		plugins: [ ...config.plugins, new webpack.DefinePlugin(envKeys) ]
+	};
 };

@@ -3,7 +3,9 @@ import { LOGIN_STATUS_CHANGE, LOGOUT } from '../constants/action-types';
 const initialState = {
 	loginInfo: {
 		logined: false,
-		sessionInfo: ''
+		userId: '',
+		locale: '',
+		token: ''
 	}
 };
 
@@ -12,7 +14,9 @@ function loginReducer(state = initialState, action: any) {
 		return Object.assign({}, state, {
 			loginInfo: {
 				logined: action.payload.logined,
-				sessionInfo: action.payload.sessionInfo
+				userId: action.payload.userId,
+				locale: action.payload.locale,
+				token: action.payload.token
 			}
 		});
 	} else if (action.type === LOGOUT) {
