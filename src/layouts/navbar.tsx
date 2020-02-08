@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../redux/actions';
 import { store } from '../redux/store';
+import axios from 'axios';
 
 class NavbarCompnent extends React.Component {
 	state = {
@@ -16,14 +17,25 @@ class NavbarCompnent extends React.Component {
 	logout = () => {
 		store.dispatch(logout());
 		window.updateTopMostParent(store.getState().loginReducer.loginInfo);
+		localStorage.clear();
 	};
 	componentDidMount() {
-		let loginStatus: any = store.getState().loginReducer.loginInfo;
-		if (loginStatus.logined) {
-			this.setState({ display: 'block' });
-		} else {
-			this.setState({ display: 'none' });
+		const info = {
+			headers: {
+				Authorization: 'Bearer '.concat(store.getState().loginReducer.loginInfo.token)
+			  },
 		}
+		axios
+			.get('http://localhost:8080/Boot/hello', info)
+			.then(() => {
+				this.setState({ display: 'block' });
+			})
+			.catch(() => {
+				this.setState({ display: 'none' });
+				store.dispatch(logout());
+				window.updateTopMostParent(store.getState().loginReducer.loginInfo);
+				localStorage.clear();
+			});
 	}
 	render() {
 		return (

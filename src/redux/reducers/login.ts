@@ -23,7 +23,9 @@ function loginReducer(state = initialState, action: any) {
 		return Object.assign({}, state, {
 			loginInfo: {
 				logined: false,
-				sessionInfo: ''
+				userId: '',
+				locale: '',
+				token: '',
 			}
 		});
 	}

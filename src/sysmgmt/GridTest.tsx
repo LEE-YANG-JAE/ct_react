@@ -1,4 +1,5 @@
 import React from 'react';
+import { store } from '../redux/store';
 const { Grid }: any = require('fancygrid-react');
 
 export default class GridTest extends React.Component {
@@ -17,20 +18,21 @@ export default class GridTest extends React.Component {
 			{
 				index: 'userId',
 				locked: true,
-				title: 'userId',
+				title: 'userId'
 			},
 			{
 				index: 'userName',
-				title: 'userName',
+				title: 'userName'
 			},
 			{
 				index: 'defaultLanguageId',
-				title: 'defaultLanguageId',
+				title: 'defaultLanguageId'
 			}
 		];
 	}
 
 	getData() {
+		const loginInfo: any = store.getState().loginReducer.loginInfo;
 		return {
 			proxy: {
 				beforeRequest: function(o: any) {
@@ -56,7 +58,7 @@ export default class GridTest extends React.Component {
 					destroy: 'POST'
 				},
 				headers: {
-					'Content-Type': 'application/json; utf-8'
+					Authorization: 'Bearer '.concat(loginInfo.token)
 				},
 				writer: {
 					type: 'json'
@@ -135,5 +137,3 @@ export default class GridTest extends React.Component {
 		);
 	}
 }
-
-

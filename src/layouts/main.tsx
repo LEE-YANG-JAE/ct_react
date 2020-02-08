@@ -8,17 +8,13 @@ export default class Main extends React.Component {
 		const loginInfo: any = store.getState().loginReducer.loginInfo;
 		const info = {
 			headers: {
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-				"Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization",
 				Authorization: 'Bearer '.concat(loginInfo.token)
 			  },
 		}
 		axios
-			.get('http://localhost:8080/Boot/hello', info)
+			.get('http://localhost:8080/Boot/api/dataload', info)
 			.then((res) => {
 				console.log(res);
-				alert('success');
 			})
 			.catch((err) => {
 				console.log(err);
