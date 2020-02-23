@@ -16,17 +16,17 @@ export default class GridTest extends React.Component {
 	getColumns() {
 		return [
 			{
-				index: 'userId',
+				index: 'userid',
 				locked: true,
-				title: 'userId'
+				title: 'userid'
 			},
 			{
-				index: 'userName',
-				title: 'userName'
+				index: 'username',
+				title: 'username'
 			},
 			{
-				index: 'defaultLanguageId',
-				title: 'defaultLanguageId'
+				index: 'locale',
+				title: 'locale'
 			}
 		];
 	}
@@ -64,7 +64,7 @@ export default class GridTest extends React.Component {
 					type: 'json'
 				},
 				params: {
-					page: 0,
+					page: -1,
 					limit: 5
 				}
 			}

@@ -1,23 +1,27 @@
 import React from 'react';
 import iphone from '../css/images/iphone.png';
-import axios from 'axios';
-import { store } from '../redux/store';
+import axiosInstance from '../utils/axiosInterceptor';
+import { RouteComponentProps } from 'react-router';
 
-export default class Main extends React.Component {
+type PathParamsType = {
+	param1: string;
+};
+
+// Your component own properties
+type PropsType = RouteComponentProps<PathParamsType> & {
+	someString: string;
+};
+
+export default class Main extends React.Component<PropsType> {
 	test = () => {
-		const loginInfo: any = store.getState().loginReducer.loginInfo;
-		const info = {
-			headers: {
-				Authorization: 'Bearer '.concat(loginInfo.token)
-			  },
-		}
-		axios
-			.get('http://localhost:8080/Boot/api/dataload', info)
+		axiosInstance
+			.get('http://localhost:8080/Boot/api/suser')
 			.then((res) => {
 				console.log(res);
 			})
 			.catch((err) => {
 				console.log(err);
+				
 			});
 	};
 	render() {
