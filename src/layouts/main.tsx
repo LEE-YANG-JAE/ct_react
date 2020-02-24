@@ -14,10 +14,26 @@ type PropsType = RouteComponentProps<PathParamsType> & {
 
 export default class Main extends React.Component<PropsType> {
 	test = () => {
+		const data = 
+		{
+			param : 
+				`query {
+					customers {
+						id
+						name
+					}
+				}`
+		};
 		axiosInstance
-			.get(process.env.REACT_APP_API_URL + '/api/suser')
+			.post(process.env.REACT_APP_API_URL + '/testGraphQL', data)
 			.then((res) => {
 				console.log(res);
+				if(res.data.errors){
+					console.log(res.data.errors[0].message)
+				} else {
+					console.log(res.data.data.customers);
+				}
+				
 			})
 			.catch((err) => {
 				console.log(err);
