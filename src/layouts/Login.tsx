@@ -96,6 +96,7 @@ class LoginComponent extends React.Component<PropsType> {
 							name='userId'
 							value={this.state.userId}
 							onChange={this.inputChange}
+							onKeyDown={this.inputKeyDown}
 						/>
 					</div>
 					{submited && !userId && <span style={{ color: 'red' }}>Please input your ID</span>}
@@ -106,6 +107,7 @@ class LoginComponent extends React.Component<PropsType> {
 							name='password'
 							value={this.state.password}
 							onChange={this.inputChange}
+							onKeyDown={this.inputKeyDown}
 						/>
 					</div>
 					{submited && !password && <span style={{ color: 'red' }}>Please input your Password</span>}

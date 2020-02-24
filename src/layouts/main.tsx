@@ -15,7 +15,7 @@ type PropsType = RouteComponentProps<PathParamsType> & {
 export default class Main extends React.Component<PropsType> {
 	test = () => {
 		axiosInstance
-			.get('http://localhost:8080/Boot/api/suser')
+			.get(process.env.REACT_APP_API_URL + '/api/suser')
 			.then((res) => {
 				console.log(res);
 			})
