@@ -10,42 +10,20 @@ const axiosInstance = axios.create({
 const isHandlerEnabled = (config: any) => {
 	return config.hasOwnProperty('handlerEnabled') && !config.handlerEnabled ? false : true;
 };
-const requestHandler = (request: any) => {
+const requestHandler = async (request: any) => {
 	if (isHandlerEnabled(request)) {
-		// Modify request here
-		request.headers['Authorization'] = 'Bearer '.concat(store.getState().loginReducer.loginInfo.token);
-	}
-	return request;
-};
-
-axiosInstance.interceptors.request.use((request) => requestHandler(request));
-const errorHandler = (error: any) => {
-	if (isHandlerEnabled(error.config)) {
-		// Handle errors
-	}
-	return Promise.reject({ ...error });
-};
-
-const successHandler = (response: any) => {
-	if (isHandlerEnabled(response.config)) {
-		// Handle responses
-		/*
-        localStorage.clear();
-        store.dispatch(logout());
-        const loginInfo: any = {
-            logined: false,
-        };
-        window.updateTopMostParent(loginInfo);
-        */
-		const data = {
+        // Modify request here
+        const data = {
 			token: store.getState().loginReducer.loginInfo.token
 		};
+        request.headers['Authorization'] = 'Bearer '.concat(data.token);
+        
 		const header = {
 			headers: {
-				Authorization: 'Bearer '.concat(store.getState().loginReducer.loginInfo.token)
+				Authorization: 'Bearer '.concat(data.token)
 			}
-		};
-		axios
+        };
+		await axios
 			.post(process.env.REACT_APP_API_URL + '/api/jwtrenew', data, header)
 			.then((res) => {
 				const loginInfo: any = store.getState().loginReducer.loginInfo;
@@ -63,6 +41,21 @@ const successHandler = (response: any) => {
 					window.updateTopMostParent(loginInfo);
 				}
 			});
+	}
+	return request;
+};
+
+axiosInstance.interceptors.request.use((request) => requestHandler(request));
+const errorHandler = (error: any) => {
+	if (isHandlerEnabled(error.config)) {
+		// Handle errors
+	}
+	return Promise.reject({ ...error });
+};
+
+const successHandler = (response: any) => {
+	if (isHandlerEnabled(response.config)) {
+		// Handle responses
 	}
 	return response;
 };
