@@ -49,7 +49,7 @@ export default class JavascriptDrumKit extends React.Component {
 	/** View **/
 	render() {
 		return (
-			<div className='content'>
+			<div className='day1'>
 				<div className='keys'>
 					<div data-key='65' className='key'>
 						<kbd>A</kbd>

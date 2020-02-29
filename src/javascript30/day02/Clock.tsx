@@ -17,7 +17,7 @@ export default class Clock extends React.Component {
 		this.setDate();
 		setInterval(this.setDate, 1000);
 	}
-	
+
 	// 시계 설정
 	setDate = () => {
 		const now = new Date();
@@ -37,12 +37,12 @@ export default class Clock extends React.Component {
 	/** View **/
 	render() {
 		return (
-			<div className='content'>
+			<div className='day2'>
 				<div className="clock">
 					<div className="clock-face">
-						<div className="hour hour-hand"></div>
-						<div className="min min-hand"></div>
-						<div className="second second-hand"></div>
+						<div className="clock-hour hour-hand"></div>
+						<div className="clock-min min-hand"></div>
+						<div className="clock-second second-hand"></div>
 					</div>
 				</div>
 			</div>
