@@ -2,6 +2,7 @@ import React from 'react';
 import iphone from '../css/images/iphone.png';
 import axiosInstance from '../utils/axiosInterceptor';
 import { RouteComponentProps } from 'react-router';
+import Person from '../training/typescript_test_3.8/Person';
 
 type PathParamsType = {
 	param1: string;
@@ -12,8 +13,11 @@ type PropsType = RouteComponentProps<PathParamsType> & {
 	someString: string;
 };
 
+
 export default class Main extends React.Component<PropsType> {
 	test = () => {
+		let jeremy = new Person("Jeremy Bearimy");
+		jeremy.greet();
 		const data = 
 		{
 			param : 
