@@ -44,18 +44,7 @@ const config = {
 				include: /\.module\.css$/
 			},
 			{
-				test: /\.png$/,
-				use: [
-					{
-						loader: 'url-loader',
-						options: {
-							mimetype: 'image/png'
-						}
-					}
-				]
-			},
-			{
-				test: /\.(png|jpe?g|gif|svg)$/i,
+				test: /\.(jpe?g|png|gif|svg)$/i, 
 				use: [
 					{
 						loader: 'file-loader'
