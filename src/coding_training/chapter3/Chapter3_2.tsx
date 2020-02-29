@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Form, Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
-import Util from '../utils/util';
-import AlertComponent from '../components/alerts/AlertComponent';
-import PizzaCheckPopup from '../components/popup/PizzaCheckPopup';
+import Util from '../../utils/util';
+import AlertComponent from '../../components/alerts/AlertComponent';
+import PizzaCheckPopup from '../../components/popup/PizzaCheckPopup';
 
 export default class Chapter3_2 extends React.Component {
 	/** 클래스내 전역 변수 영역 **/

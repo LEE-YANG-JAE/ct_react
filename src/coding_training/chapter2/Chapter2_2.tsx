@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import ModalConfirm from '../components/modals/ModalConfirm';
+import ModalConfirm from '../../components/modals/ModalConfirm';
 
 export default class Chapter2_2 extends React.Component {
 	// 전역 변수

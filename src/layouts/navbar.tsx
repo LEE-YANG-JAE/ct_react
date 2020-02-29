@@ -49,6 +49,11 @@ class NavbarCompnent extends React.Component {
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Nav className='mr-auto'>
+							<NavDropdown title='JavaScript30 Day1-10' id='basic-nav-dropdown'>
+								<LinkContainer to='/javascript30/day01'>
+									<NavDropdown.Item>JavaScript Drum Kit</NavDropdown.Item>
+								</LinkContainer>
+							</NavDropdown>
 							<NavDropdown title='입력, 프로세싱, 출력' id='basic-nav-dropdown'>
 								<LinkContainer to='/chapter2/excercise1'>
 									<NavDropdown.Item>인사하기</NavDropdown.Item>
@@ -80,7 +85,7 @@ class NavbarCompnent extends React.Component {
 									<NavDropdown.Item>페인트 계산기</NavDropdown.Item>
 								</LinkContainer>
 							</NavDropdown>
-							<NavDropdown title='트레이닝' id='basic-nav-dropdown'>
+							<NavDropdown title='기타 트레이닝' id='basic-nav-dropdown'>
 								<LinkContainer to='/trello_basic'>
 									<NavDropdown.Item>트렐로 CSS 기초</NavDropdown.Item>
 								</LinkContainer>

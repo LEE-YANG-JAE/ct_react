@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Form, Row, Col, Button, ButtonToolbar } from 'react-bootstrap';
-import Util from '../utils/util';
+import Util from '../../utils/util';
 
 export default class Chapter2_5 extends React.Component {
 	// 전역 변수

@@ -5,15 +5,15 @@ import { store } from '../redux/store';
 import Main from './Main';
 import Login from './Login';
 import NotFound from './errors/404';
-import Chapter2_1 from '../chapter2/Chapter2_1';
-import Chapter2_2 from '../chapter2/Chapter2_2';
-import Chapter2_3 from '../chapter2/Chapter2_3';
-import Chapter2_4 from '../chapter2/Chapter2_4';
-import Chapter2_5 from '../chapter2/Chapter2_5';
-import Chapter2_6 from '../chapter2/Chapter2_6';
-import Chapter3_1 from '../chapter3/Chapter3_1';
-import Chapter3_2 from '../chapter3/Chapter3_2';
-import Chapter3_3 from '../chapter3/Chapter3_3';
+import Chapter2_1 from '../coding_training/chapter2/Chapter2_1';
+import Chapter2_2 from '../coding_training/chapter2/Chapter2_2';
+import Chapter2_3 from '../coding_training/chapter2/Chapter2_3';
+import Chapter2_4 from '../coding_training/chapter2/Chapter2_4';
+import Chapter2_5 from '../coding_training/chapter2/Chapter2_5';
+import Chapter2_6 from '../coding_training/chapter2/Chapter2_6';
+import Chapter3_1 from '../coding_training/chapter3/Chapter3_1';
+import Chapter3_2 from '../coding_training/chapter3/Chapter3_2';
+import Chapter3_3 from '../coding_training/chapter3/Chapter3_3';
 import Trello_Basic from '../training/trello/Trello_Basic';
 import Drag_And_Drop from '../training/trello/Drag_And_Drop';
 import Card_Arrange from '../training/trello/Card_Arrange';
@@ -21,6 +21,7 @@ import To_Do_App from '../training/trello/To_Do_App';
 import Simple_Trello from '../training/trello/Simple_Trello';
 import Simple_Tetris from '../training/tetris/Simple_Tetris';
 import GridTest from '../sysmgmt/GridTest';
+import JavascriptDrumKit from '../javascript30/day01/javascriptDrumKit';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -96,6 +97,10 @@ const routes = [
 		path: '/sysmgmt/gridTest',
 		component: GridTest
 	},
+	{
+		path : '/javascript30/day01',
+		component : JavascriptDrumKit
+	}
 	
 ];
 

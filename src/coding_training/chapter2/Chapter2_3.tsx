@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Badge } from 'react-bootstrap';
-import AlertComponent from '../components/alerts/AlertComponent';
-import Util from '../utils/util';
+import AlertComponent from '../../components/alerts/AlertComponent';
+import Util from '../../utils/util';
 
 export default class Chapter2_3 extends React.Component {
 	// 전역 변수

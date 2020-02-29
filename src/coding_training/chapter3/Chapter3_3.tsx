@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Form, Row, Col, ButtonToolbar, Button } from 'react-bootstrap';
-import Util from '../utils/util';
-import AlertComponent from '../components/alerts/AlertComponent';
+import Util from '../../utils/util';
+import AlertComponent from '../../components/alerts/AlertComponent';
 
 export default class Chapter3_3 extends React.Component {
 	/** 클래스내 전역 변수 영역 **/
