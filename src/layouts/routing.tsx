@@ -22,6 +22,7 @@ import Simple_Trello from '../training/trello/Simple_Trello';
 import Simple_Tetris from '../training/tetris/Simple_Tetris';
 import GridTest from '../sysmgmt/GridTest';
 import JavascriptDrumKit from '../javascript30/day01/javascriptDrumKit';
+import Clock from '../javascript30/day02/Clock';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -100,6 +101,10 @@ const routes = [
 	{
 		path : '/javascript30/day01',
 		component : JavascriptDrumKit
+	},
+	{
+		path : '/javascript30/day02',
+		component : Clock
 	}
 	
 ];

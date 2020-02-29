@@ -2,7 +2,10 @@ import React from 'react';
 import '../../css/javascript30/day01/style.css';
 
 export default class JavascriptDrumKit extends React.Component {
+	/** 클래스내 전역 변수 영역 **/
 	private soundArr: object[];
+
+	/** 생성자 **/
 	constructor(props: any) {
         super(props);
 		this.soundArr = [
@@ -16,13 +19,17 @@ export default class JavascriptDrumKit extends React.Component {
 			{ 75: 'tom' },
 			{ 76: 'tink' }
 		];
-    }
+	}
+	
+	/** 이벤트 리스너 영역 **/
+	// 컴포넌트 마운트 완료 후
     componentDidMount() {
 		window.addEventListener('keydown', this.playSound);
 		const keys = Array.from(document.querySelectorAll('.key'));
 		keys.forEach((key) => key.addEventListener('transitionend', this.removeTransition));
 	}
 
+	// 오디오 플레이
 	playSound = (e: any) => {
 		const audio: any = document.querySelector(`audio[data-key="${e.keyCode}"]`);
 		const key: any = document.querySelector(`div[data-key="${e.keyCode}"]`);
@@ -33,11 +40,13 @@ export default class JavascriptDrumKit extends React.Component {
 		audio.play();
 	};
 
+	// 트랜지션 제거
 	removeTransition = (e: any) => {
 		if (e.propertyName !== 'transform') return;
 		e.target.classList.remove('playing');
 	};
 
+	/** View **/
 	render() {
 		return (
 			<div className='content'>
