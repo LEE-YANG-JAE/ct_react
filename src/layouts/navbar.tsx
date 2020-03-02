@@ -59,6 +59,9 @@ class NavbarCompnent extends React.Component {
 								<LinkContainer to='/javascript30/day03'>
 									<NavDropdown.Item>Scoped CSS Variables and JS</NavDropdown.Item>
 								</LinkContainer>
+								<LinkContainer to='/javascript30/day04'>
+									<NavDropdown.Item>Array Cardio 01</NavDropdown.Item>
+								</LinkContainer>
 							</NavDropdown>
 							<NavDropdown title='입력, 프로세싱, 출력' id='basic-nav-dropdown'>
 								<LinkContainer to='/chapter2/excercise1'>

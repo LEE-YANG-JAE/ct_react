@@ -24,6 +24,7 @@ import GridTest from '../sysmgmt/GridTest';
 import JavascriptDrumKit from '../javascript30/day01/javascriptDrumKit';
 import Clock from '../javascript30/day02/Clock';
 import ScopedCss from '../javascript30/day03/ScopedCss';
+import ArrayCardio from '../javascript30/day04/ArrayCardio';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -110,7 +111,11 @@ const routes = [
 	{
 		path : '/javascript30/day03',
 		component : ScopedCss
-	}
+	},
+	{
+		path : '/javascript30/day04',
+		component : ArrayCardio
+	},
 	
 ];
 
