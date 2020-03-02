@@ -23,6 +23,7 @@ import Simple_Tetris from '../training/tetris/Simple_Tetris';
 import GridTest from '../sysmgmt/GridTest';
 import JavascriptDrumKit from '../javascript30/day01/javascriptDrumKit';
 import Clock from '../javascript30/day02/Clock';
+import ScopedCss from '../javascript30/day03/ScopedCss';
 
 // https://tylermcginnis.com/react-router-route-config/
 const routes = [
@@ -105,6 +106,10 @@ const routes = [
 	{
 		path : '/javascript30/day02',
 		component : Clock
+	},
+	{
+		path : '/javascript30/day03',
+		component : ScopedCss
 	}
 	
 ];
