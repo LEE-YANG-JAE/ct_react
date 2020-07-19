@@ -18,7 +18,6 @@ import Trello_Basic from '../training/trello/Trello_Basic';
 import Drag_And_Drop from '../training/trello/Drag_And_Drop';
 import Card_Arrange from '../training/trello/Card_Arrange';
 import To_Do_App from '../training/trello/To_Do_App';
-import Simple_Trello from '../training/trello/Simple_Trello';
 import Simple_Tetris from '../training/tetris/Simple_Tetris';
 import GridTest from '../sysmgmt/GridTest';
 import JavascriptDrumKit from '../javascript30/day01/javascriptDrumKit';
@@ -51,10 +50,6 @@ const routes = [
 	{
 		path: '/to_do_basic',
 		component: To_Do_App
-	},
-	{
-		path: '/simple_trello',
-		component: Simple_Trello
 	},
 	{
 		path :'/simple_tetris',
