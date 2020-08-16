@@ -98,9 +98,6 @@ class NavbarCompnent extends React.Component {
 								</LinkContainer>
 							</NavDropdown>
 							<NavDropdown title='기타 트레이닝' id='basic-nav-dropdown'>
-								<LinkContainer to='/trello_basic'>
-									<NavDropdown.Item>트렐로 CSS 기초</NavDropdown.Item>
-								</LinkContainer>
 								<LinkContainer to='/drag_and_drop'>
 									<NavDropdown.Item>마우스 드래그 앤 드롭</NavDropdown.Item>
 								</LinkContainer>
